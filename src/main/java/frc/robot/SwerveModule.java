@@ -13,12 +13,13 @@ import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj.AnalogEncoder;
 import edu.wpi.first.wpilibj.Encoder;
 
+import com.revrobotics.AbsoluteEncoder;
 //import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 //import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.SparkMaxAlternateEncoder;
-import com.revrobotics.SparkAnalogSensor;
+import com.revrobotics.SparkMaxAnalogSensor;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.AnalogInput;
@@ -42,7 +43,7 @@ public class SwerveModule {
 
   //private final Encoder m_driveEncoder;
   private final RelativeEncoder m_driveEncoder;
-  private final SparkAnalogSensor m_turningEncoder;
+  private final SparkMaxAnalogSensor m_turningEncoder;
 
   // Gains are for example purposes only - must be determined for your own robot!
   private final PIDController m_drivePIDController = new PIDController(1, 0, 0);
