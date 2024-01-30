@@ -4,53 +4,165 @@
 
 package frc.robot;
 
-import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.math.filter.SlewRateLimiter;
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.hal.DriverStationJNI;
+import edu.wpi.first.util.WPIUtilJNI;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.RobotBase;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.internal.DriverStationModeThread;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkLowLevel.MotorType;
 
-public class Robot extends TimedRobot {
-  private final XboxController m_controller = new XboxController(0);
-  private final Drivetrain m_swerve = new Drivetrain();
+/**
+ * The VM is configured to automatically run this class. If you change the name of this class or the
+ * package after creating this project, you must also update the build.gradle file in the project.
+ */
+public class Robot extends RobotBase {
+  Utils utils = new Utils();
+  private CANSparkMax motorLeftFront;
+   private CANSparkMax motorLeftBack;
+   private CANSparkMax motorRightFront;
+   private CANSparkMax motorRightBack;
 
-  // Slew rate limiters to make joystick inputs more gentle; 1/3 sec from 0 to 1.
-  private final SlewRateLimiter m_xspeedLimiter = new SlewRateLimiter(3);
-  private final SlewRateLimiter m_yspeedLimiter = new SlewRateLimiter(3);
-  private final SlewRateLimiter m_rotLimiter = new SlewRateLimiter(3);
+   double maxSpeed = 1;
+   double xAxis;
+   double yAxis;
+   double zAxis;
+
+   boolean rightBumper;
+   boolean leftBumper;
+
+  private Joystick logitech = new Joystick(0);
+  
+
+  public void robotInit() {
+    System.out.println("PROGRAM STARTED !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+    motorLeftFront = new CANSparkMax(3, MotorType.kBrushless); //3
+    motorLeftBack = new CANSparkMax(4, MotorType.kBrushless); //4
+    motorRightFront = new CANSparkMax(2, MotorType.kBrushless); //2
+    motorRightBack = new CANSparkMax(5, MotorType.kBrushless); //5
+
+    System.out.println("Channels setup !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+    System.out.println("Channels setup completed");
+
+  }
+
+  
+  public void disabled() {}
+
+  public void autonomous() {}
+
+  public void teleop() {
+    System.out.println("Channels teleop !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+    xAxis = logitech.getX() * maxSpeed;
+    yAxis = logitech.getY() * maxSpeed;
+    zAxis = logitech.getRawAxis(3) * maxSpeed;
+
+    leftBumper = logitech.getRawButton(5);
+    rightBumper = logitech.getRawButton(6);
+
+    System.out.println("x: " + xAxis);
+    System.out.println("y: " + yAxis);
+    System.out.println("z: " + zAxis);
+    System.out.println("Left Bumper Pressed: " + leftBumper);
+    System.out.println("Right Bumper Pressed: " + rightBumper);
+
+    if(leftBumper) {
+      utils.strafeLeft(motorLeftFront, motorLeftBack, motorRightFront, motorRightBack);
+    } else if (rightBumper) {
+      utils.strafeRight(motorLeftFront, motorLeftBack, motorRightFront, motorRightBack);
+    } else {
+
+      motorLeftFront.set(yAxis);
+      motorRightFront.set(-zAxis);
+      motorLeftBack.set(yAxis);
+      motorRightBack.set(-zAxis);
+    }
+  }
+
+  public void test() {}
+
+  private volatile boolean m_exit;
 
   @Override
-  public void autonomousPeriodic() {
-    driveWithJoystick(false);
-    m_swerve.updateOdometry();
+  public void startCompetition() {
+    robotInit();
+
+    DriverStationModeThread modeThread = new DriverStationModeThread();
+
+    int event = WPIUtilJNI.createEvent(false, false);
+
+    DriverStation.provideRefreshedDataEventHandle(event);
+
+    // Tell the DS that the robot is ready to be enabled
+    DriverStationJNI.observeUserProgramStarting();
+
+
+    while (!Thread.currentThread().isInterrupted() && !m_exit) {
+     
+      if (isDisabled()) {
+        modeThread.inDisabled(true);
+        disabled();
+        modeThread.inDisabled(false);
+
+        while (isDisabled()) {
+          try {
+            WPIUtilJNI.waitForObject(event);
+          } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+          }
+        }
+      } else {
+        if (isAutonomous()) {
+        modeThread.inAutonomous(true);
+        autonomous();
+        modeThread.inAutonomous(false);
+        while (isAutonomousEnabled()) {
+          try {
+            WPIUtilJNI.waitForObject(event);
+          } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+          }
+        }
+      } else if (isTest()) {
+        modeThread.inTest(true);
+        test();
+        modeThread.inTest(false);
+        while (isTest() && isEnabled()) {
+          try {
+            WPIUtilJNI.waitForObject(event);
+          } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+          }
+        }
+      } else {
+          modeThread.inTeleop(true);
+          System.out.println("Tele");
+          modeThread.inTeleop(false);
+          while (isTeleopEnabled()) {
+            try {
+              teleop();
+              WPIUtilJNI.waitForObject(event);
+              
+            } catch (InterruptedException e) {
+              Thread.currentThread().interrupt();
+            }
+          }
+        }   
+      }
+    }
+
+    System.out.println("After while");
+
+    DriverStation.removeRefreshedDataEventHandle(event);
+    modeThread.close();
   }
 
   @Override
-  public void teleopPeriodic() {
-    driveWithJoystick(true);
-  }
-
-  private void driveWithJoystick(boolean fieldRelative) {
-    // Get the x speed. We are inverting this because Xbox controllers return
-    // negative values when we push forward.
-    final var xSpeed =
-        -m_xspeedLimiter.calculate(MathUtil.applyDeadband(m_controller.getLeftY(), 0.02))
-            * Drivetrain.kMaxSpeed;
-
-    // Get the y speed or sideways/strafe speed. We are inverting this because
-    // we want a positive value when we pull to the left. Xbox controllers
-    // return positive values when you pull to the right by default.
-    final var ySpeed =
-        -m_yspeedLimiter.calculate(MathUtil.applyDeadband(m_controller.getLeftX(), 0.02))
-            * Drivetrain.kMaxSpeed;
-
-    // Get the rate of angular rotation. We are inverting this because we want a
-    // positive value when we pull to the left (remember, CCW is positive in
-    // mathematics). Xbox controllers return positive values when you pull to
-    // the right by default.
-    final var rot =
-        -m_rotLimiter.calculate(MathUtil.applyDeadband(m_controller.getRightX(), 0.02))
-            * Drivetrain.kMaxAngularSpeed;
-
-    m_swerve.drive(xSpeed, ySpeed, rot, fieldRelative);
+  public void endCompetition() {
+    m_exit = true;
   }
 }
