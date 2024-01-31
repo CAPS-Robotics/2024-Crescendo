@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.hal.DriverStationJNI;
 import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.internal.DriverStationModeThread;
@@ -19,6 +20,7 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
  */
 public class Robot extends RobotBase {
   Utils utils = new Utils();
+
   private CANSparkMax motorLeftFront;
    private CANSparkMax motorLeftBack;
    private CANSparkMax motorRightFront;
@@ -28,6 +30,7 @@ public class Robot extends RobotBase {
    double xAxis;
    double yAxis;
    double zAxis;
+   double distance = 0;
 
    boolean rightBumper;
    boolean leftBumper;
@@ -52,7 +55,10 @@ public class Robot extends RobotBase {
   
   public void disabled() {}
 
-  public void autonomous() {}
+  public void autonomous() {
+    utils.driveToDistance(motorLeftFront, motorLeftBack, motorRightFront, motorRightBack, .5, 10);
+
+  }
 
   public void teleop() {
     System.out.println("Channels teleop !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -75,11 +81,7 @@ public class Robot extends RobotBase {
     } else if (rightBumper) {
       utils.strafeRight(motorLeftFront, motorLeftBack, motorRightFront, motorRightBack);
     } else {
-
-      motorLeftFront.set(yAxis);
-      motorRightFront.set(-zAxis);
-      motorLeftBack.set(yAxis);
-      motorRightBack.set(-zAxis);
+      utils.move(motorLeftFront, motorLeftBack, motorRightFront, motorRightBack, yAxis, zAxis);
     }
   }
 
