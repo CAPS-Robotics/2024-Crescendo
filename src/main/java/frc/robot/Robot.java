@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.internal.DriverStationModeThread;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.revrobotics.RelativeEncoder;
 
 /**
  * The VM is configured to automatically run this class. If you change the name of this class or the
@@ -23,6 +24,12 @@ public class Robot extends RobotBase {
    private CANSparkMax motorLeftBack;
    private CANSparkMax motorRightFront;
    private CANSparkMax motorRightBack;
+
+   private RelativeEncoder encoderLeftFront;
+   private RelativeEncoder encoderLeftBack;
+   private RelativeEncoder encoderRightFront;
+   private RelativeEncoder encoderRightBack;
+   
 
    double maxSpeed = 1;
    double xAxis;
@@ -42,6 +49,11 @@ public class Robot extends RobotBase {
     motorLeftBack = new CANSparkMax(4, MotorType.kBrushless); //4
     motorRightFront = new CANSparkMax(2, MotorType.kBrushless); //2
     motorRightBack = new CANSparkMax(5, MotorType.kBrushless); //5
+
+    encoderLeftFront = motorLeftFront.getEncoder();
+    encoderLeftBack = motorLeftBack.getEncoder();
+    encoderRightFront = motorRightFront.getEncoder();
+    encoderRightBack = motorRightBack.getEncoder();
 
     System.out.println("Channels setup !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
@@ -69,6 +81,14 @@ public class Robot extends RobotBase {
     System.out.println("z: " + zAxis);
     System.out.println("Left Bumper Pressed: " + leftBumper);
     System.out.println("Right Bumper Pressed: " + rightBumper);
+    System.out.println("Left Front Velocity: " + encoderLeftFront.getVelocity());
+    System.out.println("Left Back Velocity: " + encoderLeftBack.getVelocity());
+    System.out.println("Right Front Velocity: " + encoderRightFront.getVelocity());
+    System.out.println("Right Back Velocity: " + encoderRightBack.getVelocity());
+    System.out.println("Left Front Position: " + encoderLeftFront.getPosition());
+    System.out.println("Left Back Position: " + encoderLeftBack.getPosition());
+    System.out.println("Right Front Position: " + encoderRightFront.getPosition());
+    System.out.println("Right Back Position: " + encoderRightBack.getPosition());
 
     if(leftBumper) {
       utils.strafeLeft(motorLeftFront, motorLeftBack, motorRightFront, motorRightBack);
