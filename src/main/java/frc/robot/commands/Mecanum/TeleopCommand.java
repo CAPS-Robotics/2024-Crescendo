@@ -4,6 +4,7 @@
 
 package frc.robot.commands.Mecanum;
 
+import frc.robot.Dashboard;
 import frc.robot.subsystems.MecanumSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -23,10 +24,11 @@ public class TeleopCommand extends Command {
 
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private MecanumSubsystem mec_subsystem;
+  private Dashboard dashboard;
 
   public TeleopCommand(MecanumSubsystem subsystem, Joystick joystick) {
     this.mec_subsystem = subsystem;
-    this. logitech = joystick;
+    this.logitech = joystick;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(mec_subsystem);
   }
@@ -54,6 +56,9 @@ public class TeleopCommand extends Command {
     } else {
       mec_subsystem.drive(yAxis, zAxis);
     }
+
+    // Update the dashboard with current values
+    dashboard.updateTeleopTab(leftBumper, rightBumper, yAxis, zAxis);
   }
 
   // Called once the command ends or is interrupted.
