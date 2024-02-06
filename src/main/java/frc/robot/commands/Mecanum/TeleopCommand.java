@@ -4,7 +4,7 @@
 
 package frc.robot.commands.Mecanum;
 
-import frc.robot.Dashboard;
+// import frc.robot.Dashboard;
 import frc.robot.subsystems.MecanumSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -14,7 +14,7 @@ public class TeleopCommand extends Command {
 
   Joystick logitech;
   double speed;
-  double maxSpeed = 0.25;
+  double maxSpeed = .5;
   double xAxis;
   double yAxis;
   double zAxis;
@@ -24,7 +24,7 @@ public class TeleopCommand extends Command {
 
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private MecanumSubsystem mec_subsystem;
-  private Dashboard dashboard;
+  // private Dashboard dashboard;
 
   public TeleopCommand(MecanumSubsystem subsystem, Joystick joystick) {
     this.mec_subsystem = subsystem;
@@ -46,6 +46,7 @@ public class TeleopCommand extends Command {
     yAxis = logitech.getY() * maxSpeed;
     zAxis = logitech.getRawAxis(3) * maxSpeed;
 
+    System.err.println(yAxis);
     leftBumper = logitech.getRawButton(5);
     rightBumper = logitech.getRawButton(6);
     
@@ -54,11 +55,11 @@ public class TeleopCommand extends Command {
     } else if (rightBumper) {
       mec_subsystem.strafeRight(maxSpeed);
     } else {
-      mec_subsystem.drive(yAxis, zAxis);
+      mec_subsystem.drive(yAxis);
     }
 
     // Update the dashboard with current values
-    dashboard.updateTeleopTab(leftBumper, rightBumper, yAxis, zAxis);
+    // dashboard.updateTeleopTab(leftBumper, rightBumper, yAxis, zAxis);
   }
 
   // Called once the command ends or is interrupted.

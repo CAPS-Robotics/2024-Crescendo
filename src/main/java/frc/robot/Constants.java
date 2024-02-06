@@ -15,5 +15,6 @@ package frc.robot;
 public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
+    public static final double gearRatio = 12.571471214294434/4096;
   }
 }

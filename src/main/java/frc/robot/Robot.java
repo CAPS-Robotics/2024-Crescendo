@@ -82,7 +82,11 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+    if(isTeleop()) {
+      m_robotContainer.getMecanumSubsystem().resetEncoders();
+    }
+  }
 
   @Override
   public void testInit() {

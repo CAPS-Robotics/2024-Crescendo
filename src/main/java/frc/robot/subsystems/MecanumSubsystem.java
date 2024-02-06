@@ -4,16 +4,16 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.commands.Mecanum.TeleopCommand;
+import frc.robot.Constants;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
+
 public class MecanumSubsystem extends SubsystemBase {
+  double gearRatio = Constants.OperatorConstants.gearRatio;
   /** Creates a new ExampleSubsystem. */
 
   private CANSparkMax motorLeftFront = new CANSparkMax(3, MotorType.kBrushless); //3
@@ -46,16 +46,11 @@ public class MecanumSubsystem extends SubsystemBase {
 
 
 
-  public void drive(double yAxis, double zAxis) {
-    // motorLeftFront.set(-yAxis);
-    // motorRightFront.set(zAxis);
-    // motorLeftBack.set(-yAxis);
-    // motorRightBack.set(-zAxis);
-
-    motorLeftFront.set(-1);
-    motorRightFront.set(1);
-    motorLeftBack.set(-1);
-    motorRightBack.set(-1);
+  public void drive(double yAxis) {
+    motorLeftFront.set(-yAxis);
+    motorRightFront.set(yAxis);
+    motorLeftBack.set(-yAxis);
+    motorRightBack.set(-yAxis);
   }
   
   public void strafeLeft(double speed) {
@@ -93,14 +88,17 @@ public class MecanumSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    System.err.println("Encoder Left Front" + encoderLeftFront.getPosition());
+    double tickToFeet = (encoderLeftBack.getPosition() * 6 * Math.PI)/(12 * gearRatio);
+    System.err.println("Encoder Left Back" + encoderLeftBack.getPosition());
+    System.err.println("Encoder Left Back Tick To Feet" + tickToFeet);
     // System.err.println("Encoder Left Back" + encoderLeftBack.getPosition());
     // System.err.println("Encoder Right Front" + encoderRightFront.getPosition());
     // System.err.println("Encoder Right Back" + encoderRightBack.getPosition());
-    System.err.println("Position Conversion Factor " + encoderLeftFront.getPositionConversionFactor());
-    System.err.println("Counts per rev " + encoderLeftFront.getCountsPerRevolution());
-    System.err.println("Measurement Period " + encoderLeftFront.getMeasurementPeriod());
-    System.err.println("Velocity Conversion Factor" + encoderLeftFront.getVelocityConversionFactor());
+    // System.err.println("Position Conversion Factor " + encoderLeftFront.getPositionConversionFactor());
+    // System.err.println("Counts per rev " + encoderLeftFront.getCountsPerRevolution()); //12.571471214294434
+    // System.err.println("Measurement Period " + encoderLeftFront.getMeasurementPeriod());
+    // System.err.println("Velocity Conversion Factor" + encoderLeftFront.getVelocityConversionFactor());
+
   }
 
   @Override
