@@ -4,17 +4,16 @@
 
 package frc.robot.commands;
 
-import frc.robot.commands.Mecanum.TeleopCommand;
-import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.MecanumSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import frc.robot.commands.Mecanum.AutonCommand;
+import frc.robot.subsystems.MecanumSubsystem;
 
 public final class Autos {
   /** Example static factory for an autonomous command. */
-  // public static Command exampleAuto(MecanumSubsystem subsystem) {
-  //   return Commands.sequence(subsystem.exampleMethodCommand(), new TeleopCommand(subsystem));
-  // }
+  public static Command driveAuto(MecanumSubsystem subsystem, double setPoint) {
+    return Commands.sequence(new AutonCommand(subsystem,setPoint));
+   }
 
   private Autos() {
     throw new UnsupportedOperationException("This is a utility class!");

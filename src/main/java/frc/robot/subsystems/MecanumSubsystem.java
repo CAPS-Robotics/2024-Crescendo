@@ -10,6 +10,8 @@ import frc.robot.Constants;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
+
 
 
 public class MecanumSubsystem extends SubsystemBase {
@@ -28,12 +30,16 @@ public class MecanumSubsystem extends SubsystemBase {
   
  // private TeleopCommand teleopCommand ;
   
+  double maxSpeed = 1; 
+
   double xAxis;
   double yAxis;
   double zAxis;
 
-  boolean rightBumper;
-  boolean leftBumper;
+  // boolean rightBumper;
+  // boolean leftBumper;
+
+  private MecanumDrive mecanumDrive = new MecanumDrive(motorLeftFront::set, motorLeftBack::set, motorRightFront::set, motorRightBack::set);
 
   public MecanumSubsystem() {
     encoderLeftFront = motorLeftFront.getEncoder();
@@ -44,16 +50,18 @@ public class MecanumSubsystem extends SubsystemBase {
     resetEncoders();
   }
 
-
-
-  public void drive(double yAxis) {
-    motorLeftFront.set(-yAxis);
-    motorRightFront.set(yAxis);
-    motorLeftBack.set(-yAxis);
-    motorRightBack.set(-yAxis);
+  public void drive(double xSpeed, double ySpeed, double rotation) {
+    xSpeed = maxSpeed(xSpeed);
+    ySpeed = maxSpeed(ySpeed);
+    mecanumDrive.driveCartesian(xSpeed, ySpeed, rotation);
+    // motorLeftFront.set(-speed);
+    // motorRightFront.set(speed);
+    // motorLeftBack.set(-speed);
+    // motorRightBack.set(-speed);
   }
   
   public void strafeLeft(double speed) {
+    speed = maxSpeed(speed);
     motorLeftFront.set(-speed);
     motorRightFront.set(-speed);
     motorLeftBack.set(speed);
@@ -61,10 +69,18 @@ public class MecanumSubsystem extends SubsystemBase {
     }
 
   public void strafeRight(double speed) {
+    speed = maxSpeed(speed);
     motorLeftFront.set(speed);
     motorRightFront.set(speed);
     motorLeftBack.set(-speed);
     motorRightBack.set(speed);
+  }
+
+  public double maxSpeed(double speed) {
+    if(speed > 1) {
+      return 1;
+    }
+    return speed;
   }
 
   public void stop() {
@@ -85,12 +101,44 @@ public class MecanumSubsystem extends SubsystemBase {
     encoderRightFront.setPosition(0);
     encoderRightBack.setPosition(0);
   }
+  public RelativeEncoder getEncoderLeftBack() {
+    return encoderLeftBack;
+  }
+
+  public RelativeEncoder getEncoderRightBack() {
+    return encoderRightBack;
+  }
+
+  public RelativeEncoder getEncoderLeftFront() {
+    return encoderLeftFront;
+  }
+
+  public RelativeEncoder getEncoderRightFront() {
+    return encoderRightFront;
+  }
+
+  public CANSparkMax getMotorLeftFront() {
+    return motorLeftFront;
+  }
+
+  public CANSparkMax getMotorLeftBack() {
+    return motorLeftBack;
+  }
+  public CANSparkMax getMotorRightFront() {
+    return motorRightFront;
+  }
+  public CANSparkMax getMotorRightBack() {
+    return motorRightBack;
+  }
+  
 
   @Override
   public void periodic() {
-    double tickToFeet = (encoderLeftBack.getPosition() * 6 * Math.PI)/(12 * gearRatio);
-    System.err.println("Encoder Left Back" + encoderLeftBack.getPosition());
-    System.err.println("Encoder Left Back Tick To Feet" + tickToFeet);
+    // double tickToFeet = (encoderLeftBack.getPosition() * 6 * Math.PI)/(12 * gearRatio );
+    System.err.println("Position == " + (encoderLeftBack.getPosition())+"\n");
+    //System.err.println("encoderLeftBack.getPosition() * 6 * Math.PI ==" + (encoderLeftBack.getPosition() * 6 * Math.PI)+"\n");
+    //System.err.println("(12 * gearRatio)==" + (12 * gearRatio)+"\n");
+    //System.err.println("Encoder Left Back Tick To Feet ==" + tickToFeet+"\n");
     // System.err.println("Encoder Left Back" + encoderLeftBack.getPosition());
     // System.err.println("Encoder Right Front" + encoderRightFront.getPosition());
     // System.err.println("Encoder Right Back" + encoderRightBack.getPosition());
