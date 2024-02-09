@@ -6,22 +6,42 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.Dashboard;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
+
+import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.motorcontrol.Talon;
 
 
 
-public class MecanumSubsystem extends SubsystemBase {
-  double gearRatio = Constants.OperatorConstants.gearRatio;
+public class MecanumSubsystem extends SubsystemBase{
   /** Creates a new ExampleSubsystem. */
 
+  Dashboard dashboard = new Dashboard();
+
+  NetworkTable table;
+
+  //DriveBase
   private CANSparkMax motorLeftFront = new CANSparkMax(3, MotorType.kBrushless); //3
   private CANSparkMax motorLeftBack = new CANSparkMax(4, MotorType.kBrushless); //4
   private CANSparkMax motorRightFront = new CANSparkMax(2, MotorType.kBrushless); //2
   private CANSparkMax motorRightBack = new CANSparkMax(5, MotorType.kBrushless); //5
+
+  //Shooter
+  private Talon rollerTop = new Talon(6);
+  private Talon rollerBottom = new Talon(7);
+  private Talon loader = new Talon(8);
+
+  //Slide
+  private CANSparkMax rightElevator = new CANSparkMax(9, MotorType.kBrushless);
+  private CANSparkMax leftElevator = new CANSparkMax(10, MotorType.kBrushless);
+
+  //Climber
+  private CANSparkMax chain = new CANSparkMax(11, MotorType.kBrushless);
 
   private RelativeEncoder encoderLeftFront;
   private RelativeEncoder encoderLeftBack;
@@ -83,47 +103,39 @@ public class MecanumSubsystem extends SubsystemBase {
     encoderRightFront.setPosition(0);
     encoderRightBack.setPosition(0);
   }
-  public RelativeEncoder getEncoderLeftBack() {
-    return encoderLeftBack;
-  }
 
-  public RelativeEncoder getEncoderRightBack() {
-    return encoderRightBack;
-  }
+  //Drive
+  public CANSparkMax getMotorLeftFront() { return motorLeftFront; }
+  public CANSparkMax getMotorLeftBack() { return motorLeftBack; }
+  public CANSparkMax getMotorRightFront() { return motorRightFront; }
+  public CANSparkMax getMotorRightBack() { return motorRightBack; }
 
-  public RelativeEncoder getEncoderLeftFront() {
-    return encoderLeftFront;
-  }
+  //Drive Encoders
+  public RelativeEncoder getEncoderLeftBack() { return encoderLeftBack; }
+  public RelativeEncoder getEncoderRightBack() { return encoderRightBack; }
+  public RelativeEncoder getEncoderLeftFront() { return encoderLeftFront; }
+  public RelativeEncoder getEncoderRightFront() { return encoderRightFront; }  
 
-  public RelativeEncoder getEncoderRightFront() {
-    return encoderRightFront;
-  }
+  //Shooter
 
-  public CANSparkMax getMotorLeftFront() {
-    return motorLeftFront;
-  }
+  //Slide
 
-  public CANSparkMax getMotorLeftBack() {
-    return motorLeftBack;
-  }
-  public CANSparkMax getMotorRightFront() {
-    return motorRightFront;
-  }
-  public CANSparkMax getMotorRightBack() {
-    return motorRightBack;
-  }
-  
+  //Climber
+
 
   @Override
   public void periodic() {
+    dashboard.updateTeleopTab(false, false, xAxis, yAxis, zAxis);
     // double tickToFeet = (encoderLeftBack.getPosition() * 6 * Math.PI)/(12 * gearRatio );
     // System.err.println("Position == " + (encoderLeftBack.getPosition())+"\n");
     //System.err.println("encoderLeftBack.getPosition() * 6 * Math.PI ==" + (encoderLeftBack.getPosition() * 6 * Math.PI)+"\n");
     //System.err.println("(12 * gearRatio)==" + (12 * gearRatio)+"\n");
     //System.err.println("Encoder Left Back Tick To Feet ==" + tickToFeet+"\n");
-    // System.err.println("Encoder Left Back" + encoderLeftBack.getPosition());
-    // System.err.println("Encoder Right Front" + encoderRightFront.getPosition());
-    // System.err.println("Encoder Right Back" + encoderRightBack.getPosition());
+
+    System.err.println("Encoder Left Front" + encoderLeftFront.getPosition());
+    System.err.println("Encoder Left Back" + encoderLeftBack.getPosition());
+    System.err.println("Encoder Right Front" + encoderRightFront.getPosition());
+    System.err.println("Encoder Right Back" + encoderRightBack.getPosition());
     // System.err.println("Position Conversion Factor " + encoderLeftFront.getPositionConversionFactor());
     // System.err.println("Counts per rev " + encoderLeftFront.getCountsPerRevolution()); //12.571471214294434
     // System.err.println("Measurement Period " + encoderLeftFront.getMeasurementPeriod());

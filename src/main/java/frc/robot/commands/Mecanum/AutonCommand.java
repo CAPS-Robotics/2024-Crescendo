@@ -45,7 +45,8 @@ public class AutonCommand extends Command {
     error = totalRotations - mec_subsystem.getEncoderLeftBack().getPosition();
     kp = 1/totalRotations;
     outputSpeed = error * kp;
-  //  mec_subsystem.drive(outputSpeed);
+    System.err.println(outputSpeed);
+    mec_subsystem.drive(0, outputSpeed, 0);
     // Update the dashboard with current values
     // dashboard.updateTeleopTab(leftBumper, rightBumper, yAxis, zAxis);
   }
