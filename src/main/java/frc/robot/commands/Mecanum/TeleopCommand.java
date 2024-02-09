@@ -14,13 +14,12 @@ public class TeleopCommand extends Command {
 
   Joystick logitech;
   double speed;
-  double maxSpeed = .5;
   double xAxis;
   double yAxis;
   double zAxis;
 
-  boolean rightBumper;
-  boolean leftBumper;
+  // boolean rightBumper;
+  // boolean leftBumper;
 
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private MecanumSubsystem mec_subsystem;
@@ -42,25 +41,15 @@ public class TeleopCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    xAxis = logitech.getX() * maxSpeed; //Not used
-    yAxis = logitech.getY() * maxSpeed;
-    zAxis = logitech.getRawAxis(3) * maxSpeed;
+    xAxis = logitech.getX(); 
+    yAxis = logitech.getY();
+    zAxis = logitech.getZ();
+
 
     System.err.println(yAxis);
     // leftBumper = logitech.getRawButton(5);
     // rightBumper = logitech.getRawButton(6);
-    double bob = 0;
-    mec_subsystem.drive(xAxis, yAxis, bob);
-    // if(xAxis != 0) {
-    //   if(xAxis > 0) {
-    //     mec_subsystem.strafeRight(maxSpeed);
-    //   }
-    //   if(xAxis < 0) {
-    //     mec_subsystem.strafeLeft(maxSpeed);
-    //   }
-    // } else {
-    //   mec_subsystem.drive(xAxis, yAxis, bob);
-    // }
+    mec_subsystem.drive(xAxis, yAxis, zAxis);
 
     // Update the dashboard with current values
     // dashboard.updateTeleopTab(leftBumper, rightBumper, yAxis, zAxis);
@@ -76,4 +65,3 @@ public class TeleopCommand extends Command {
     return false;
   }
 }
-//12.428616523742676

@@ -42,45 +42,27 @@ public class MecanumSubsystem extends SubsystemBase {
   private MecanumDrive mecanumDrive = new MecanumDrive(motorLeftFront::set, motorLeftBack::set, motorRightFront::set, motorRightBack::set);
 
   public MecanumSubsystem() {
+    motorLeftFront.restoreFactoryDefaults();
+    motorLeftBack.restoreFactoryDefaults();
+    motorRightFront.restoreFactoryDefaults();
+    motorRightBack.restoreFactoryDefaults();
+
     encoderLeftFront = motorLeftFront.getEncoder();
     encoderLeftBack = motorLeftBack.getEncoder();
     encoderRightFront = motorRightFront.getEncoder();
-    encoderRightBack = motorRightBack.getEncoder();   
-    
+    encoderRightBack = motorRightBack.getEncoder();
+  
     resetEncoders();
   }
 
   public void drive(double xSpeed, double ySpeed, double rotation) {
-    xSpeed = maxSpeed(xSpeed);
-    ySpeed = maxSpeed(ySpeed);
-    mecanumDrive.driveCartesian(xSpeed, ySpeed, rotation);
-    // motorLeftFront.set(-speed);
-    // motorRightFront.set(speed);
-    // motorLeftBack.set(-speed);
-    // motorRightBack.set(-speed);
-  }
-  
-  public void strafeLeft(double speed) {
-    speed = maxSpeed(speed);
-    motorLeftFront.set(-speed);
-    motorRightFront.set(-speed);
-    motorLeftBack.set(speed);
-    motorRightBack.set(-speed);
-    }
+    System.err.println("xSpeed: " + xSpeed);
+    System.err.println("ySpeed: " + ySpeed);
 
-  public void strafeRight(double speed) {
-    speed = maxSpeed(speed);
-    motorLeftFront.set(speed);
-    motorRightFront.set(speed);
-    motorLeftBack.set(-speed);
-    motorRightBack.set(speed);
-  }
-
-  public double maxSpeed(double speed) {
-    if(speed > 1) {
-      return 1;
-    }
-    return speed;
+    motorLeftFront.setInverted(true);
+    motorLeftBack.setInverted(true);
+    
+    mecanumDrive.driveCartesian(ySpeed, xSpeed, rotation);
   }
 
   public void stop() {
@@ -135,7 +117,7 @@ public class MecanumSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // double tickToFeet = (encoderLeftBack.getPosition() * 6 * Math.PI)/(12 * gearRatio );
-    System.err.println("Position == " + (encoderLeftBack.getPosition())+"\n");
+    // System.err.println("Position == " + (encoderLeftBack.getPosition())+"\n");
     //System.err.println("encoderLeftBack.getPosition() * 6 * Math.PI ==" + (encoderLeftBack.getPosition() * 6 * Math.PI)+"\n");
     //System.err.println("(12 * gearRatio)==" + (12 * gearRatio)+"\n");
     //System.err.println("Encoder Left Back Tick To Feet ==" + tickToFeet+"\n");
