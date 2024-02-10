@@ -14,7 +14,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class ShooterSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
 
-  public ShooterSubsystem() {}
+  // CANSparkMax 
+  public ShooterSubsystem() {
+
+  }
 
   /**
    * Example command factory method.

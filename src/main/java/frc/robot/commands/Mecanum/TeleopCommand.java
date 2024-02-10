@@ -7,27 +7,36 @@ package frc.robot.commands.Mecanum;
 // import frc.robot.Dashboard;
 import frc.robot.subsystems.MecanumSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /** An example command that uses an example subsystem. */
 public class TeleopCommand extends Command {
 
-  Joystick logitech;
+  XboxController xboxController;
   double speed;
   double xAxis;
   double yAxis;
   double zAxis;
 
-  // boolean rightBumper;
-  // boolean leftBumper;
+  double leftTrigger;
+  double rightTrigger;
+
+  boolean xButton;
+  boolean yButton;
+  boolean aButton;
+  boolean bButton;
+
+  boolean leftBumper;
+  boolean rightBumper;
 
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private MecanumSubsystem mec_subsystem;
   // private Dashboard dashboard;
 
-  public TeleopCommand(MecanumSubsystem subsystem, Joystick joystick) {
+  public TeleopCommand(MecanumSubsystem subsystem, XboxController joystick) {
     this.mec_subsystem = subsystem;
-    this.logitech = joystick;
+    this.xboxController = joystick;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(mec_subsystem);
   }
@@ -41,15 +50,25 @@ public class TeleopCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    xAxis = logitech.getX(); 
-    yAxis = logitech.getY();
-    zAxis = logitech.getZ();
+    xAxis = xboxController.getLeftX(); //Strafe
+    yAxis = xboxController.getLeftY(); //Front and Back
+    zAxis = xboxController.getRightX(); //Turning
 
+    leftTrigger = xboxController.getLeftTriggerAxis();
+    rightTrigger = xboxController.getRightTriggerAxis();
+
+    xButton = xboxController.getXButtonPressed();
+    yButton = xboxController.getYButtonPressed();
+    aButton = xboxController.getAButtonPressed();
+    bButton = xboxController.getBButtonPressed();
+
+    leftBumper = xboxController.getLeftBumperPressed();
+    rightBumper = xboxController.getRightBumperPressed();
 
     System.err.println(yAxis);
     // leftBumper = logitech.getRawButton(5);
     // rightBumper = logitech.getRawButton(6);
-    mec_subsystem.drive(xAxis, yAxis, zAxis);
+    mec_subsystem.drive(-1 * xAxis, yAxis, -1 * zAxis);
 
     // Update the dashboard with current values
     // dashboard.updateTeleopTab(leftBumper, rightBumper, yAxis, zAxis);

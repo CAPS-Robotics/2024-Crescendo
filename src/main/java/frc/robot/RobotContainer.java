@@ -9,6 +9,7 @@ import frc.robot.commands.Mecanum.TeleopCommand;
 import frc.robot.subsystems.MecanumSubsystem;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -22,11 +23,11 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final MecanumSubsystem mec_Subsystem = new MecanumSubsystem();
+  private final XboxController xboxController = new XboxController(1);
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   // private final CommandXboxController m_driverController =
   //     new CommandXboxController(OperatorConstants.kDriverControllerPort);
-  private Joystick logitech = new Joystick(0);
   private double setPoint = 10; 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -41,7 +42,7 @@ public class RobotContainer {
   }
   public void defaultCommand() {
     System.err.println(DriverStation.isTeleopEnabled());
-     mec_Subsystem.setDefaultCommand(new TeleopCommand(mec_Subsystem, logitech));
+     mec_Subsystem.setDefaultCommand(new TeleopCommand(mec_Subsystem, xboxController));
   }
 
   /**
