@@ -22,7 +22,6 @@ public class Robot extends TimedRobot {
   private RobotContainer m_robotContainer;
   private MecanumSubsystem mec_Subsystem;
   private AutonCommand autonCommand;
-  // private Dashboard dashboard;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -68,8 +67,9 @@ public class Robot extends TimedRobot {
     // dashboard.updateMainTab(true, "Auto");
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
-      // m_autonomousCommand.schedule();
-       m_autonomousCommand.execute();
+      System.err.println("Inside Auto Init");
+        m_autonomousCommand.schedule();
+      // m_autonomousCommand.execute();
     }
     // autonCommand.execute();
   }
@@ -78,7 +78,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     if(isAutonomous()) {
-      m_robotContainer.getMecanumSubsystem().resetEncoders();
+
     }
   }
 

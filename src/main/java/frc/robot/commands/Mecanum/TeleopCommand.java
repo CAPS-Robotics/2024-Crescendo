@@ -59,19 +59,17 @@ public class TeleopCommand extends Command {
 
     xButton = xboxController.getXButtonPressed();
     yButton = xboxController.getYButtonPressed();
-    aButton = xboxController.getAButtonPressed();
+    aButton = xboxController.getAButtonPressed(); // Endgame
     bButton = xboxController.getBButtonPressed();
 
     leftBumper = xboxController.getLeftBumperPressed();
     rightBumper = xboxController.getRightBumperPressed();
 
-    System.err.println(yAxis);
-    // leftBumper = logitech.getRawButton(5);
-    // rightBumper = logitech.getRawButton(6);
+    if(aButton) {
+      System.err.println("Endgame");
+      mec_subsystem.endGame();
+    }
     mec_subsystem.drive(-1 * xAxis, yAxis, -1 * zAxis);
-
-    // Update the dashboard with current values
-    // dashboard.updateTeleopTab(leftBumper, rightBumper, yAxis, zAxis);
   }
 
   // Called once the command ends or is interrupted.

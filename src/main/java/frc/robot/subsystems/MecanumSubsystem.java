@@ -15,6 +15,7 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 
@@ -76,13 +77,21 @@ public class MecanumSubsystem extends SubsystemBase{
   }
 
   public void drive(double xSpeed, double ySpeed, double rotation) {
-    System.err.println("xSpeed: " + xSpeed);
-    System.err.println("ySpeed: " + ySpeed);
+    System.err.println("In drive");
+    // System.err.println("xSpeed: " + xSpeed);
+    // System.err.println("ySpeed: " + ySpeed);
 
     motorLeftFront.setInverted(true);
     motorLeftBack.setInverted(true);
     
     mecanumDrive.driveCartesian(ySpeed, xSpeed, rotation);
+  }
+
+  public void endGame() {
+    System.err.println(SmartDashboard.getNumber("id", -1));
+    System.err.println(SmartDashboard.getNumber("angle", 1000));
+    System.err.println(SmartDashboard.getNumber("dist", -1));
+    // System.err.println(SmartDashboard.getNumber("angleDist", -1));
   }
 
   public void stop() {
@@ -125,22 +134,15 @@ public class MecanumSubsystem extends SubsystemBase{
 
   @Override
   public void periodic() {
-    // dashboard.updateTeleopTab(false, false, xAxis, yAxis, zAxis);
-    // double tickToFeet = (encoderLeftBack.getPosition() * 6 * Math.PI)/(12 * gearRatio );
-    // System.err.println("Position == " + (encoderLeftBack.getPosition())+"\n");
-    //System.err.println("encoderLeftBack.getPosition() * 6 * Math.PI ==" + (encoderLeftBack.getPosition() * 6 * Math.PI)+"\n");
-    //System.err.println("(12 * gearRatio)==" + (12 * gearRatio)+"\n");
-    //System.err.println("Encoder Left Back Tick To Feet ==" + tickToFeet+"\n");
+    SmartDashboard.putNumber("Left Front Position", encoderLeftFront.getPosition());
+    SmartDashboard.putNumber("Left Back Position", encoderLeftBack.getPosition());
+    SmartDashboard.putNumber("Right Front Position", encoderRightFront.getPosition());
+    SmartDashboard.putNumber("Right Back Position", encoderRightBack.getPosition());
 
-    System.err.println("Encoder Left Front" + encoderLeftFront.getPosition());
-    System.err.println("Encoder Left Back" + encoderLeftBack.getPosition());
-    System.err.println("Encoder Right Front" + encoderRightFront.getPosition());
-    System.err.println("Encoder Right Back" + encoderRightBack.getPosition());
-    // System.err.println("Position Conversion Factor " + encoderLeftFront.getPositionConversionFactor());
-    // System.err.println("Counts per rev " + encoderLeftFront.getCountsPerRevolution()); //12.571471214294434
-    // System.err.println("Measurement Period " + encoderLeftFront.getMeasurementPeriod());
-    // System.err.println("Velocity Conversion Factor" + encoderLeftFront.getVelocityConversionFactor());
-
+    SmartDashboard.putNumber("Left Front Velocity", encoderLeftFront.getVelocity());
+    SmartDashboard.putNumber("Left Back Velocity", encoderLeftBack.getVelocity());
+    SmartDashboard.putNumber("Right Front Velocity", encoderRightFront.getVelocity());
+    SmartDashboard.putNumber("Right Back Velocity", encoderRightBack.getVelocity());
   }
 
   @Override

@@ -39,14 +39,26 @@ public class AutonCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.err.println("Exe");
-   // setPoint = 10; 
+    System.err.println(" in autoCommand Execute method");
+    System.err.println("Sp: "+setPoint);
+    //setPoint = 10; 
     totalRotations = ((setPoint * 12)/(6 * Math.PI)) * 12.57;
+    System.err.println("total Rotations: " + totalRotations);
+
     error = totalRotations - mec_subsystem.getEncoderLeftBack().getPosition();
+    System.err.println("Error:" + error);
     kp = 1/totalRotations;
     outputSpeed = error * kp;
-    System.err.println(outputSpeed);
-    mec_subsystem.drive(0, outputSpeed, 0);
+    System.err.println("OutSpeed In Auto: "+outputSpeed);
+    if (outputSpeed > 0)
+    {
+      mec_subsystem.drive(0, outputSpeed, 0);
+    }
+    else
+    {
+      System.err.println("STOP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    }
+    
     // Update the dashboard with current values
     // dashboard.updateTeleopTab(leftBumper, rightBumper, yAxis, zAxis);
   }
