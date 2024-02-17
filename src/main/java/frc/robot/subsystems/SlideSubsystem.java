@@ -4,42 +4,76 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
+
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 //2 motor 2 neo
 
 public class SlideSubsystem extends SubsystemBase {
-  /** Creates a new ExampleSubsystem. */
-  public SlideSubsystem() {}
+  MecanumSubsystem mec_subsystem = new MecanumSubsystem();
+  DigitalInput topLimitSwitch = new DigitalInput(0);
+  DigitalInput bottomLimitSwitch = new DigitalInput(1);
 
-  /**
-   * Example command factory method.
-   *
-   * @return a command
-   */
-  public Command exampleMethodCommand() {
-    // Inline construction of command goes here.
-    // Subsystem::RunOnce implicitly requires `this` subsystem.
-    return runOnce(
-        () -> {
-          /* one-time action goes here */
-        });
+  private CANSparkMax topSlide = new CANSparkMax(11, MotorType.kBrushless);
+  private CANSparkMax bottomSlide = new CANSparkMax(12, MotorType.kBrushless);
+
+  private RelativeEncoder encoderTopSlide;
+  private RelativeEncoder encoderBottomSlide;
+
+  /** Creates a new ExampleSubsystem. */
+  public SlideSubsystem() {
+    topSlide.restoreFactoryDefaults();
+    bottomSlide.restoreFactoryDefaults();
+
+    encoderTopSlide = topSlide.getEncoder();
+    encoderBottomSlide = bottomSlide.getEncoder();
+
+    encoderTopSlide.setPosition(0);
+    encoderBottomSlide.setPosition(0);
+  } 
+
+  public void stop() {
+    topSlide.set(0);
+    bottomSlide.set(0);
   }
 
-  /**
-   * An example method querying a boolean state of the subsystem (for example, a digital sensor).
-   *
-   * @return value of some boolean subsystem state, such as a digital sensor.
-   */
-  public boolean exampleCondition() {
-    // Query some boolean state, such as a digital sensor.
-    return false;
+  public void slide(double slideSpeed) {
+    if(slideSpeed > 0) {
+      System.err.println("Move up" + slideSpeed);
+      topSlide.set(slideSpeed);
+      bottomSlide.set(slideSpeed);
+      if (!topLimitSwitch.get()) {
+        stop();
+      }
+    } else if (slideSpeed < 0) {
+      System.err.println("Move down" + slideSpeed);
+      topSlide.set(slideSpeed);
+      bottomSlide.set(slideSpeed);
+      if (!bottomLimitSwitch.get()) {
+        stop();
+      }
+    } else {
+      stop();
+    }
+  }
+
+  public void slideToPosition(double slideSpeed, double position) {
+    if(position <= encoderTopSlide.getPosition()) {
+      stop();
+      
+    } else {
+      System.err.println(encoderTopSlide.getPosition());
+      slide(slideSpeed);
+    }
   }
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
   }
 
   @Override

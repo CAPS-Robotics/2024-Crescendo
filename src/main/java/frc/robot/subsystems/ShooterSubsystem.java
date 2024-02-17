@@ -1,55 +1,50 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
+// // Copyright (c) FIRST and other WPILib contributors.
+// // Open Source Software; you can modify and/or share it under the terms of
+// // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.subsystems;
+// package frc.robot.subsystems;
 
-import com.revrobotics.CANSparkMax;
+// import com.revrobotics.CANSparkLowLevel.MotorType;
+// import com.revrobotics.CANSparkMax;
 
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
+// import edu.wpi.first.wpilibj.DigitalInput;
+// import edu.wpi.first.wpilibj2.command.Command;
+// import edu.wpi.first.wpilibj2.command.SubsystemBase;
+// import frc.robot.Constants;
 
-//3 motors 1 neo 2 talon
+// //3 motors 1 neo 2 talon
 
-public class ShooterSubsystem extends SubsystemBase {
-  /** Creates a new ExampleSubsystem. */
+// public class ShooterSubsystem extends SubsystemBase {
+//   /** Creates a new ExampleSubsystem. */
 
-  // CANSparkMax 
-  public ShooterSubsystem() {
+//   MecanumSubsystem mec_subsystem = new MecanumSubsystem();
+//   Constants constants = new Constants();
 
-  }
+//   DigitalInput topLimitSwitch = new DigitalInput(0);
+//   DigitalInput bottomLimitSwitch = new DigitalInput(1);
 
-  /**
-   * Example command factory method.
-   *
-   * @return a command
-   */
-  public Command exampleMethodCommand() {
-    // Inline construction of command goes here.
-    // Subsystem::RunOnce implicitly requires `this` subsystem.
-    return runOnce(
-        () -> {
-          /* one-time action goes here */
-        });
-  }
+//   private CANSparkMax frontRollers = new CANSparkMax(12, MotorType.kBrushless);
+//   private CANSparkMax backRollers = new CANSparkMax(11, MotorType.kBrushless);
 
-  /**
-   * An example method querying a boolean state of the subsystem (for example, a digital sensor).
-   *
-   * @return value of some boolean subsystem state, such as a digital sensor.
-   */
-  public boolean exampleCondition() {
-    // Query some boolean state, such as a digital sensor.
-    return false;
-  }
+//   // CANSparkMax 
+//   public ShooterSubsystem() {
 
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
+//   }
 
-  @Override
-  public void simulationPeriodic() {
-    // This method will be called once per scheduler run during simulation
-  }
-}
+//   public void intake() {
+//     frontRollers.setInverted(true);
+//     backRollers.setInverted(true);
+
+//     // frontRollers.set(constants.);
+//   }
+
+//   @Override
+//   public void periodic() {
+//     // This method will be called once per scheduler run
+//   }
+
+//   @Override
+//   public void simulationPeriodic() {
+//     // This method will be called once per scheduler run during simulation
+//   }
+// }

@@ -4,8 +4,11 @@
 
 package frc.robot.commands.Mecanum;
 
+import frc.robot.subsystems.ClimberSubsystem;
 // import frc.robot.Dashboard;
 import frc.robot.subsystems.MecanumSubsystem;
+// import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.SlideSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -13,7 +16,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 /** An example command that uses an example subsystem. */
 public class TeleopCommand extends Command {
 
-  XboxController xboxController;
+  Joystick joystick;
   double speed;
   double xAxis;
   double yAxis;
@@ -32,11 +35,14 @@ public class TeleopCommand extends Command {
 
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private MecanumSubsystem mec_subsystem;
+  // private ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
+  private SlideSubsystem slideSubsystem = new SlideSubsystem();
+  private ClimberSubsystem climberSubsystem = new ClimberSubsystem();
   // private Dashboard dashboard;
 
-  public TeleopCommand(MecanumSubsystem subsystem, XboxController joystick) {
+  public TeleopCommand(MecanumSubsystem subsystem, Joystick joystick) {
     this.mec_subsystem = subsystem;
-    this.xboxController = joystick;
+    this.joystick = joystick;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(mec_subsystem);
   }
@@ -50,28 +56,39 @@ public class TeleopCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    xAxis = xboxController.getLeftX(); //Strafe
-    yAxis = xboxController.getLeftY(); //Front and Back
-    zAxis = xboxController.getRightX(); //Turning
+    xAxis = joystick.getRawAxis(0); //Strafe
+    yAxis = joystick.getRawAxis(1); //Front and Back
+    zAxis = joystick.getRawAxis(4); //Turning
 
-    leftTrigger = xboxController.getLeftTriggerAxis();
-    rightTrigger = xboxController.getRightTriggerAxis();
 
-    xButton = xboxController.getXButtonPressed();
-    yButton = xboxController.getYButtonPressed();
-    aButton = xboxController.getAButtonPressed(); // Endgame
-    bButton = xboxController.getBButtonPressed();
+    leftTrigger = joystick.getRawAxis(2);
+    rightTrigger = joystick.getRawAxis(3);
 
-    leftBumper = xboxController.getLeftBumperPressed();
-    rightBumper = xboxController.getRightBumperPressed();
+    xButton = joystick.getRawButton(3);
+    yButton = joystick.getRawButton(4);
+    aButton = joystick.getRawButton(1); // Endgame
+    bButton = joystick.getRawButton(2);
+
+    leftBumper = joystick.getRawButton(5);
+    rightBumper = joystick.getRawButton(6);
 
     if(aButton) {
       System.err.println("Endgame");
       mec_subsystem.endGame();
+    } 
+
+    if (!xButton && !yButton) {
+      slideSubsystem.stop();
+    } else if (xButton) {
+      slideSubsystem.slideToPosition(.25, 100);
+    } else if (yButton) {
+      slideSubsystem.slideToPosition(-.25, 50);
+    } else {
+      System.err.println("What?");
     }
+
     mec_subsystem.drive(-1 * xAxis, yAxis, -1 * zAxis);
   }
-
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {}

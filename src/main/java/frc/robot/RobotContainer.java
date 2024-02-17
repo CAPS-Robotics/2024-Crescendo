@@ -23,7 +23,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final MecanumSubsystem mec_Subsystem = new MecanumSubsystem();
-  private final XboxController xboxController = new XboxController(1);
+  private final Joystick xboxController = new Joystick(1);
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   // private final CommandXboxController m_driverController =

@@ -27,27 +27,23 @@ public class MecanumSubsystem extends SubsystemBase{
   NetworkTable table;
 
   //DriveBase
-  private CANSparkMax motorLeftFront = new CANSparkMax(3, MotorType.kBrushless); //3
-  private CANSparkMax motorLeftBack = new CANSparkMax(4, MotorType.kBrushless); //4
-  private CANSparkMax motorRightFront = new CANSparkMax(2, MotorType.kBrushless); //2
-  private CANSparkMax motorRightBack = new CANSparkMax(5, MotorType.kBrushless); //5
+  // private CANSparkMax motorLeftFront = new CANSparkMax(3, MotorType.kBrushless); //3
+  // private CANSparkMax motorLeftBack = new CANSparkMax(4, MotorType.kBrushless); //4
+  // private CANSparkMax motorRightFront = new CANSparkMax(2, MotorType.kBrushless); //2
+  // private CANSparkMax motorRightBack = new CANSparkMax(5, MotorType.kBrushless); //5
 
-  //Shooter
-  private Talon rollerTop = new Talon(6);
-  private Talon rollerBottom = new Talon(7);
-  private Talon loader = new Talon(8);
+  // //Shooter
+  // private Talon rollerTop = new Talon(6);
+  // private Talon rollerBottom = new Talon(7);
+  // private Talon loader = new Talon(8);
 
-  //Slide
-  private CANSparkMax rightElevator = new CANSparkMax(9, MotorType.kBrushless);
-  private CANSparkMax leftElevator = new CANSparkMax(10, MotorType.kBrushless);
+  // //Climber
+  // private CANSparkMax chain = new CANSparkMax(11, MotorType.kBrushless);
 
-  //Climber
-  private CANSparkMax chain = new CANSparkMax(11, MotorType.kBrushless);
-
-  private RelativeEncoder encoderLeftFront;
-  private RelativeEncoder encoderLeftBack;
-  private RelativeEncoder encoderRightFront;
-  private RelativeEncoder encoderRightBack;
+  // private RelativeEncoder encoderLeftFront;
+  // private RelativeEncoder encoderLeftBack;
+  // private RelativeEncoder encoderRightFront;
+  // private RelativeEncoder encoderRightBack;
   
  // private TeleopCommand teleopCommand ;
   
@@ -60,70 +56,68 @@ public class MecanumSubsystem extends SubsystemBase{
   // boolean rightBumper;
   // boolean leftBumper;
 
-  private MecanumDrive mecanumDrive = new MecanumDrive(motorLeftFront::set, motorLeftBack::set, motorRightFront::set, motorRightBack::set);
+ // private MecanumDrive mecanumDrive = new MecanumDrive(motorLeftFront::set, motorLeftBack::set, motorRightFront::set, motorRightBack::set);
 
   public MecanumSubsystem() {
-    motorLeftFront.restoreFactoryDefaults();
-    motorLeftBack.restoreFactoryDefaults();
-    motorRightFront.restoreFactoryDefaults();
-    motorRightBack.restoreFactoryDefaults();
+    // motorLeftFront.restoreFactoryDefaults();
+    // motorLeftBack.restoreFactoryDefaults();
+    // motorRightFront.restoreFactoryDefaults();
+    // motorRightBack.restoreFactoryDefaults();
 
-    encoderLeftFront = motorLeftFront.getEncoder();
-    encoderLeftBack = motorLeftBack.getEncoder();
-    encoderRightFront = motorRightFront.getEncoder();
-    encoderRightBack = motorRightBack.getEncoder();
+    // encoderLeftFront = motorLeftFront.getEncoder();
+    // encoderLeftBack = motorLeftBack.getEncoder();
+    // encoderRightFront = motorRightFront.getEncoder();
+    // encoderRightBack = motorRightBack.getEncoder();
   
     resetEncoders();
   }
 
   public void drive(double xSpeed, double ySpeed, double rotation) {
-    System.err.println("In drive");
     // System.err.println("xSpeed: " + xSpeed);
     // System.err.println("ySpeed: " + ySpeed);
 
-    motorLeftFront.setInverted(true);
-    motorLeftBack.setInverted(true);
+    // motorLeftFront.setInverted(true);
+    // motorLeftBack.setInverted(true);
     
-    mecanumDrive.driveCartesian(ySpeed, xSpeed, rotation);
+    // mecanumDrive.driveCartesian(ySpeed, xSpeed, rotation);
   }
 
   public void endGame() {
     System.err.println(SmartDashboard.getNumber("id", -1));
     System.err.println(SmartDashboard.getNumber("angle", 1000));
     System.err.println(SmartDashboard.getNumber("dist", -1));
-    // System.err.println(SmartDashboard.getNumber("angleDist", -1));
   }
 
   public void stop() {
-    motorLeftFront.set(0);
-    motorRightFront.set(0);
-    motorLeftBack.set(0);
-    motorRightBack.set(0);
+    // motorLeftFront.set(0);
+    // motorRightFront.set(0);
+    // motorLeftBack.set(0);
+    // motorRightBack.set(0);
   }
 
   public void resetEncoders() {
-    motorLeftFront.restoreFactoryDefaults();
-    motorLeftBack.restoreFactoryDefaults();
-    motorRightFront.restoreFactoryDefaults();
-    motorRightFront.restoreFactoryDefaults();
+    // motorLeftFront.restoreFactoryDefaults();
+    // motorLeftBack.restoreFactoryDefaults();
+    // motorRightFront.restoreFactoryDefaults();
+    // motorRightFront.restoreFactoryDefaults();
 
-    encoderLeftFront.setPosition(0);
-    encoderLeftBack.setPosition(0);
-    encoderRightFront.setPosition(0);
-    encoderRightBack.setPosition(0);
+    // encoderLeftFront.setPosition(0);
+    // encoderLeftBack.setPosition(0);
+    // encoderRightFront.setPosition(0);
+    // encoderRightBack.setPosition(0);
   }
 
   //Drive
-  public CANSparkMax getMotorLeftFront() { return motorLeftFront; }
-  public CANSparkMax getMotorLeftBack() { return motorLeftBack; }
-  public CANSparkMax getMotorRightFront() { return motorRightFront; }
-  public CANSparkMax getMotorRightBack() { return motorRightBack; }
+  // public CANSparkMax getMotorLeftFront() { return motorLeftFront; }
+  // public CANSparkMax getMotorLeftBack() { return motorLeftBack; }
+  // public CANSparkMax getMotorRightFront() { return motorRightFront; }
+  // public CANSparkMax getMotorRightBack() { return motorRightBack; }
 
-  //Drive Encoders
-  public RelativeEncoder getEncoderLeftBack() { return encoderLeftBack; }
-  public RelativeEncoder getEncoderRightBack() { return encoderRightBack; }
-  public RelativeEncoder getEncoderLeftFront() { return encoderLeftFront; }
-  public RelativeEncoder getEncoderRightFront() { return encoderRightFront; }  
+  // //Drive Encoders
+  // public RelativeEncoder getEncoderLeftBack() { return encoderLeftBack; }
+  // public RelativeEncoder getEncoderRightBack() { return encoderRightBack; }
+  // public RelativeEncoder getEncoderLeftFront() { return encoderLeftFront; }
+  // public RelativeEncoder getEncoderRightFront() { return encoderRightFront; }  
 
   //Shooter
 
@@ -134,15 +128,15 @@ public class MecanumSubsystem extends SubsystemBase{
 
   @Override
   public void periodic() {
-    SmartDashboard.putNumber("Left Front Position", encoderLeftFront.getPosition());
-    SmartDashboard.putNumber("Left Back Position", encoderLeftBack.getPosition());
-    SmartDashboard.putNumber("Right Front Position", encoderRightFront.getPosition());
-    SmartDashboard.putNumber("Right Back Position", encoderRightBack.getPosition());
+    // SmartDashboard.putNumber("Left Front Position", encoderLeftFront.getPosition());
+    // SmartDashboard.putNumber("Left Back Position", encoderLeftBack.getPosition());
+    // SmartDashboard.putNumber("Right Front Position", encoderRightFront.getPosition());
+    // SmartDashboard.putNumber("Right Back Position", encoderRightBack.getPosition());
 
-    SmartDashboard.putNumber("Left Front Velocity", encoderLeftFront.getVelocity());
-    SmartDashboard.putNumber("Left Back Velocity", encoderLeftBack.getVelocity());
-    SmartDashboard.putNumber("Right Front Velocity", encoderRightFront.getVelocity());
-    SmartDashboard.putNumber("Right Back Velocity", encoderRightBack.getVelocity());
+    // SmartDashboard.putNumber("Left Front Velocity", encoderLeftFront.getVelocity());
+    // SmartDashboard.putNumber("Left Back Velocity", encoderLeftBack.getVelocity());
+    // SmartDashboard.putNumber("Right Front Velocity", encoderRightFront.getVelocity());
+    // SmartDashboard.putNumber("Right Back Velocity", encoderRightBack.getVelocity());
   }
 
   @Override

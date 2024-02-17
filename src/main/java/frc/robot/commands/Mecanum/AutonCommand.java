@@ -45,8 +45,8 @@ public class AutonCommand extends Command {
     totalRotations = ((setPoint * 12)/(6 * Math.PI)) * 12.57;
     System.err.println("total Rotations: " + totalRotations);
 
-    error = totalRotations - mec_subsystem.getEncoderLeftBack().getPosition();
-    System.err.println("Error:" + error);
+    // error = totalRotations - mec_subsystem.getEncoderLeftBack().getPosition();
+    // System.err.println("Error:" + error);
     kp = 1/totalRotations;
     outputSpeed = error * kp;
     System.err.println("OutSpeed In Auto: "+outputSpeed);
@@ -59,8 +59,6 @@ public class AutonCommand extends Command {
       System.err.println("STOP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
     
-    // Update the dashboard with current values
-    // dashboard.updateTeleopTab(leftBumper, rightBumper, yAxis, zAxis);
   }
 
   // Called once the command ends or is interrupted.
