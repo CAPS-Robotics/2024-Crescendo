@@ -19,8 +19,8 @@ public class SlideSubsystem extends SubsystemBase {
   DigitalInput topLimitSwitch = new DigitalInput(0);
   DigitalInput bottomLimitSwitch = new DigitalInput(1);
 
-  private CANSparkMax topSlide = new CANSparkMax(11, MotorType.kBrushless);
-  private CANSparkMax bottomSlide = new CANSparkMax(12, MotorType.kBrushless);
+  private CANSparkMax topSlide = new CANSparkMax(9, MotorType.kBrushless);
+  private CANSparkMax bottomSlide = new CANSparkMax(10, MotorType.kBrushless);
 
   public RelativeEncoder encoderTopSlide;
   public RelativeEncoder encoderBottomSlide;
@@ -35,7 +35,7 @@ public class SlideSubsystem extends SubsystemBase {
 
     encoderTopSlide.setPosition(0);
     encoderBottomSlide.setPosition(0);
-  } 
+  }
 
   public void stop() {
     topSlide.set(0);
@@ -43,7 +43,7 @@ public class SlideSubsystem extends SubsystemBase {
   }
 
   public void slide(double slideSpeed) {
-    if(slideSpeed > 0) {
+    if (slideSpeed > 0) {
       System.err.println("Move up" + slideSpeed);
       topSlide.set(slideSpeed);
       bottomSlide.set(slideSpeed);
@@ -64,22 +64,22 @@ public class SlideSubsystem extends SubsystemBase {
 
   public void slideToPosition(double slideSpeed, double position) {
     if (slideSpeed > 0) {
-      if(position <= encoderTopSlide.getPosition() || position <= encoderBottomSlide.getPosition()) {
+      if (position <= encoderTopSlide.getPosition() || position <= encoderBottomSlide.getPosition()) {
         stop();
-        
+
       } else {
         System.err.println(encoderBottomSlide.getPosition());
         slide(slideSpeed);
       }
     } else if (slideSpeed < 0) {
-      if(position >= encoderTopSlide.getPosition() || position >= encoderBottomSlide.getPosition()) {
+      if (position >= encoderTopSlide.getPosition() || position >= encoderBottomSlide.getPosition()) {
         stop();
-        
+
       } else {
         System.err.println(encoderBottomSlide.getPosition());
         slide(slideSpeed);
       }
-    } 
+    }
   }
 
   @Override

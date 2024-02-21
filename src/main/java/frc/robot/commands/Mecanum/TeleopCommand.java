@@ -7,6 +7,7 @@ package frc.robot.commands.Mecanum;
 import frc.robot.subsystems.ClimberSubsystem;
 // import frc.robot.Dashboard;
 import frc.robot.subsystems.MecanumSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 // import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SlideSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
@@ -37,11 +38,12 @@ public class TeleopCommand extends Command {
   double ypos = 0;
   boolean reached = false;
 
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private MecanumSubsystem mec_subsystem;
   // private ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
   private SlideSubsystem slideSubsystem = new SlideSubsystem();
   private ClimberSubsystem climberSubsystem = new ClimberSubsystem();
+  private ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
   // private Dashboard dashboard;
 
   public TeleopCommand(MecanumSubsystem subsystem, Joystick joystick) {
@@ -60,10 +62,9 @@ public class TeleopCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    xAxis = joystick.getRawAxis(0); //Strafe
-    yAxis = joystick.getRawAxis(1); //Front and Back
-    zAxis = joystick.getRawAxis(4); //Turning
-
+    xAxis = joystick.getRawAxis(0); // Strafe
+    yAxis = joystick.getRawAxis(1); // Front and Back
+    zAxis = joystick.getRawAxis(4); // Turning
 
     leftTrigger = joystick.getRawAxis(2);
     rightTrigger = joystick.getRawAxis(3);
@@ -76,37 +77,45 @@ public class TeleopCommand extends Command {
     leftBumper = joystick.getRawButton(5);
     rightBumper = joystick.getRawButton(6);
 
-    if(aButton) {
+    if (aButton) {
+      System.err.println("A");
+      shooterSubsystem.intake();
+    }
+    if (bButton) {
       System.err.println("Endgame");
       mec_subsystem.endGame();
-    } 
+    }
 
     if (!xButton && !yButton) {
       slideSubsystem.stop();
-      
     } else if (xButton) {
       System.err.println("X pressed");
       slideSubsystem.slideToPosition(.25, xpos);
       reached = true;
+
+      shooterSubsystem.shootAmp();
     } else if (yButton) {
       System.err.println("Y pressed");
       slideSubsystem.slideToPosition(-.25, ypos);
       reached = true;
+
+      shooterSubsystem.shootSpeaker();
     } else {
-      
+
     }
     if (!xButton && slideSubsystem.encoderBottomSlide.getPosition() == xpos) {
       xpos += 25;
     } else if (!yButton && slideSubsystem.encoderBottomSlide.getPosition() == ypos) {
       ypos -= 25;
-    } 
-    
+    }
 
     mec_subsystem.drive(-1 * xAxis, yAxis, -1 * zAxis);
   }
+
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+  }
 
   // Returns true when the command should end.
   @Override

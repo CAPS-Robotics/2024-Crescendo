@@ -17,7 +17,8 @@ public final class Constants {
     public static final int kDriverControllerPort = 0;
     public static final double gearRatio = 12.571471214294434/4096;
     public static final double intakeSpeed = 0.25;
-    public static final double shootSpeakerSpeed = 0.5;
+    public static final double shootSpeakerSpeed = 0.75;
     public static final double shootAmpSpeed = 0.5;
+    public static final double backRollersShootSpeed = 0.25;
   }
 }
