@@ -22,8 +22,8 @@ public class SlideSubsystem extends SubsystemBase {
   private CANSparkMax topSlide = new CANSparkMax(11, MotorType.kBrushless);
   private CANSparkMax bottomSlide = new CANSparkMax(12, MotorType.kBrushless);
 
-  private RelativeEncoder encoderTopSlide;
-  private RelativeEncoder encoderBottomSlide;
+  public RelativeEncoder encoderTopSlide;
+  public RelativeEncoder encoderBottomSlide;
 
   /** Creates a new ExampleSubsystem. */
   public SlideSubsystem() {
@@ -63,13 +63,23 @@ public class SlideSubsystem extends SubsystemBase {
   }
 
   public void slideToPosition(double slideSpeed, double position) {
-    if(position <= encoderTopSlide.getPosition()) {
-      stop();
-      
-    } else {
-      System.err.println(encoderTopSlide.getPosition());
-      slide(slideSpeed);
-    }
+    if (slideSpeed > 0) {
+      if(position <= encoderTopSlide.getPosition() || position <= encoderBottomSlide.getPosition()) {
+        stop();
+        
+      } else {
+        System.err.println(encoderBottomSlide.getPosition());
+        slide(slideSpeed);
+      }
+    } else if (slideSpeed < 0) {
+      if(position >= encoderTopSlide.getPosition() || position >= encoderBottomSlide.getPosition()) {
+        stop();
+        
+      } else {
+        System.err.println(encoderBottomSlide.getPosition());
+        slide(slideSpeed);
+      }
+    } 
   }
 
   @Override

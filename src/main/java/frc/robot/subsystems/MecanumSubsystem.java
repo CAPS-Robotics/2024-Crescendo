@@ -55,6 +55,11 @@ public class MecanumSubsystem extends SubsystemBase{
 
   // boolean rightBumper;
   // boolean leftBumper;
+  double aprilId = SmartDashboard.getNumber("id", -1);
+  double aprilAngle = SmartDashboard.getNumber("angle", 1000);
+  double aprilDist = SmartDashboard.getNumber("dist", -1);
+
+  boolean climbReady = false;
 
  // private MecanumDrive mecanumDrive = new MecanumDrive(motorLeftFront::set, motorLeftBack::set, motorRightFront::set, motorRightBack::set);
 
@@ -83,9 +88,9 @@ public class MecanumSubsystem extends SubsystemBase{
   }
 
   public void endGame() {
-    System.err.println(SmartDashboard.getNumber("id", -1));
-    System.err.println(SmartDashboard.getNumber("angle", 1000));
-    System.err.println(SmartDashboard.getNumber("dist", -1));
+    System.err.println();
+    System.err.println();
+    System.err.println();
   }
 
   public void stop() {
@@ -137,6 +142,12 @@ public class MecanumSubsystem extends SubsystemBase{
     // SmartDashboard.putNumber("Left Back Velocity", encoderLeftBack.getVelocity());
     // SmartDashboard.putNumber("Right Front Velocity", encoderRightFront.getVelocity());
     // SmartDashboard.putNumber("Right Back Velocity", encoderRightBack.getVelocity());
+
+    if (aprilId == 14 || aprilId == 15 || aprilId == 16) {
+      climbReady = true;
+    }
+
+    SmartDashboard.putBoolean("Ready To Climb", climbReady);
   }
 
   @Override

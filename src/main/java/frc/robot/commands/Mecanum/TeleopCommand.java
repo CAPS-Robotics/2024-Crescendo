@@ -33,6 +33,10 @@ public class TeleopCommand extends Command {
   boolean leftBumper;
   boolean rightBumper;
 
+  double xpos = 0;
+  double ypos = 0;
+  boolean reached = false;
+
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private MecanumSubsystem mec_subsystem;
   // private ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
@@ -79,13 +83,24 @@ public class TeleopCommand extends Command {
 
     if (!xButton && !yButton) {
       slideSubsystem.stop();
+      
     } else if (xButton) {
-      slideSubsystem.slideToPosition(.25, 100);
+      System.err.println("X pressed");
+      slideSubsystem.slideToPosition(.25, xpos);
+      reached = true;
     } else if (yButton) {
-      slideSubsystem.slideToPosition(-.25, 50);
+      System.err.println("Y pressed");
+      slideSubsystem.slideToPosition(-.25, ypos);
+      reached = true;
     } else {
-      System.err.println("What?");
+      
     }
+    if (!xButton && slideSubsystem.encoderBottomSlide.getPosition() == xpos) {
+      xpos += 25;
+    } else if (!yButton && slideSubsystem.encoderBottomSlide.getPosition() == ypos) {
+      ypos -= 25;
+    } 
+    
 
     mec_subsystem.drive(-1 * xAxis, yAxis, -1 * zAxis);
   }
