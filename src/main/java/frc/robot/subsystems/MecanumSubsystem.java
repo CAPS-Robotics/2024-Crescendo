@@ -5,7 +5,6 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
 // import frc.robot.Dashboard;
 
 import com.revrobotics.CANSparkMax;
@@ -14,7 +13,6 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
-import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
@@ -31,18 +29,6 @@ public class MecanumSubsystem extends SubsystemBase{
   private CANSparkMax motorLeftBack = new CANSparkMax(4, MotorType.kBrushless); //4
   private CANSparkMax motorRightFront = new CANSparkMax(2, MotorType.kBrushless); //2
   private CANSparkMax motorRightBack = new CANSparkMax(5, MotorType.kBrushless); //5
-
-  // //Shooter
-  // private Talon rollerTop = new Talon(6);
-  // private Talon rollerBottom = new Talon(7);
-  // private Talon loader = new Talon(8);
-
-  // //Slide
-  // private CANSparkMax rightElevator = new CANSparkMax(9, MotorType.kBrushless);
-  // private CANSparkMax leftElevator = new CANSparkMax(10, MotorType.kBrushless);
-
-  // //Climber
-  // private CANSparkMax chain = new CANSparkMax(11, MotorType.kBrushless);
 
   private RelativeEncoder encoderLeftFront;
   private RelativeEncoder encoderLeftBack;

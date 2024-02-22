@@ -98,16 +98,14 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    // if(isTeleop()) {
-    //   m_robotContainer.getMecanumSubsystem().resetEncoders();
-    // }
-
+    if(isTeleop()) {
+      m_robotContainer.getMecanumSubsystem().resetEncoders();
+    }
   }
 
   @Override
   public void testInit() {
     // Cancels all running commands at the start of test mode.
-    // dashboard.updateMainTab(true, "Test");
     CommandScheduler.getInstance().cancelAll();
   }
 
@@ -118,7 +116,6 @@ public class Robot extends TimedRobot {
   /** This function is called once when the robot is first started up. */
   @Override
   public void simulationInit() {
-    // dashboard.updateMainTab(true, "Sim");
   }
 
   /** This function is called periodically whilst in simulation. */
