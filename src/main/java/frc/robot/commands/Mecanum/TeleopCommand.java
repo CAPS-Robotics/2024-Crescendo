@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 /** An example command that uses an example subsystem. */
 public class TeleopCommand extends Command {
 
-  XboxController xboxController;
+  Joystick joystick;
   double speed;
   double xAxis;
   double yAxis;
@@ -34,9 +34,9 @@ public class TeleopCommand extends Command {
   private MecanumSubsystem mec_subsystem;
   // private Dashboard dashboard;
 
-  public TeleopCommand(MecanumSubsystem subsystem, XboxController joystick) {
+  public TeleopCommand(MecanumSubsystem subsystem, Joystick joystick) {
     this.mec_subsystem = subsystem;
-    this.xboxController = joystick;
+    this.joystick = joystick;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(mec_subsystem);
   }
@@ -50,20 +50,20 @@ public class TeleopCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    xAxis = xboxController.getLeftX(); //Strafe
-    yAxis = xboxController.getLeftY(); //Front and Back
-    zAxis = xboxController.getRightX(); //Turning
+    xAxis = joystick.getX(); //Strafe
+    yAxis = joystick.getY(); //Front and Back
+    zAxis = joystick.getZ(); //Turning
 
-    leftTrigger = xboxController.getLeftTriggerAxis();
-    rightTrigger = xboxController.getRightTriggerAxis();
+    leftTrigger = joystick.getRawAxis(2);
+    rightTrigger = joystick.getRawAxis(3);
 
-    xButton = xboxController.getXButtonPressed();
-    yButton = xboxController.getYButtonPressed();
-    aButton = xboxController.getAButtonPressed(); // Endgame
-    bButton = xboxController.getBButtonPressed();
+    xButton = joystick.getRawButton(3);
+    yButton = joystick.getRawButton(4);
+    aButton = joystick.getRawButton(1); // Endgame
+    bButton = joystick.getRawButton(2);
 
-    leftBumper = xboxController.getLeftBumperPressed();
-    rightBumper = xboxController.getRightBumperPressed();
+    leftBumper = joystick.getRawButton(5);
+    rightBumper = joystick.getRawButton(6);
 
     if(aButton) {
       System.err.println("Endgame");
