@@ -10,11 +10,12 @@ import com.revrobotics.RelativeEncoder;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
-//2 motor 2 neo
+import frc.robot.Constants.OperatorConstants;
 
 public class SlideSubsystem extends SubsystemBase {
   MecanumSubsystem mec_subsystem = new MecanumSubsystem();
+  OperatorConstants operatorConstants = new OperatorConstants();
+
   DigitalInput topLimitSwitch = new DigitalInput(0);
   DigitalInput bottomLimitSwitch = new DigitalInput(1);
 
@@ -24,7 +25,8 @@ public class SlideSubsystem extends SubsystemBase {
   public RelativeEncoder encoderTopSlide;
   public RelativeEncoder encoderBottomSlide;
 
-  /** Creates a new ExampleSubsystem. */
+  int slidePosition;
+
   public SlideSubsystem() {
     topSlide.restoreFactoryDefaults();
     bottomSlide.restoreFactoryDefaults();
@@ -44,41 +46,73 @@ public class SlideSubsystem extends SubsystemBase {
   public void slide(double slideSpeed) {
     if (slideSpeed > 0) {
       System.err.println("Move up" + slideSpeed);
-      topSlide.set(slideSpeed);
-      bottomSlide.set(slideSpeed);
       if (!topLimitSwitch.get()) {
         stop();
+      } else {
+        topSlide.set(slideSpeed);
+        bottomSlide.set(slideSpeed);
       }
     } else if (slideSpeed < 0) {
       System.err.println("Move down" + slideSpeed);
-      topSlide.set(slideSpeed);
-      bottomSlide.set(slideSpeed);
       if (!bottomLimitSwitch.get()) {
         stop();
+      } else {
+        topSlide.set(slideSpeed);
+        bottomSlide.set(slideSpeed);
       }
     } else {
       stop();
     }
   }
 
-  public void slideToPosition(double slideSpeed, double position) {
-    if (slideSpeed > 0) {
-      if (position <= encoderTopSlide.getPosition() || position <= encoderBottomSlide.getPosition()) {
-        stop();
+  public void slideToPosition(double slideSpeed, int position) {
+    // if (slideSpeed > 0) {
+    // if (position <= encoderTopSlide.getPosition() || position <=
+    // encoderBottomSlide.getPosition()) {
+    // stop();
 
-      } else {
-        System.err.println(encoderBottomSlide.getPosition());
+    // } else {
+    // System.err.println(encoderBottomSlide.getPosition());
+    // slide(slideSpeed);
+    // }
+    // } else if (slideSpeed < 0) {
+    // if (position >= encoderTopSlide.getPosition() || position >=
+    // encoderBottomSlide.getPosition()) {
+    // stop();
+
+    // } else {
+    // System.err.println(encoderBottomSlide.getPosition());
+    // slide(slideSpeed);
+    // }
+    // }
+    if (position == 1) {
+      if (topLimitSwitch.get()) {
         slide(slideSpeed);
       }
-    } else if (slideSpeed < 0) {
-      if (position >= encoderTopSlide.getPosition() || position >= encoderBottomSlide.getPosition()) {
-        stop();
 
-      } else {
-        System.err.println(encoderBottomSlide.getPosition());
-        slide(slideSpeed);
+      slidePosition = position;
+    } else if (position == 2) {
+      if (position == 1) {
+        if (operatorConstants.slidePosition2 > encoderTopSlide.getPosition()) {
+          slide(slideSpeed);
+        } else {
+          stop();
+        }
+      } else if (position == 3) {
+        if (operatorConstants.slidePosition2 < encoderTopSlide.getPosition()) {
+          slide(slideSpeed);
+        } else {
+          stop();
+        }
       }
+      slidePosition = position;
+    } else if (position == 3) {
+      slide(-slideSpeed);
+
+      slidePosition = position;
+
     }
+
   }
 
   @Override

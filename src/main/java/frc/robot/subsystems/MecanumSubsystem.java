@@ -11,42 +11,29 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
-import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-
-
-public class MecanumSubsystem extends SubsystemBase{
-  /** Creates a new ExampleSubsystem. */
-
-  // Dashboard dashboard = new Dashboard();
-
-  NetworkTable table;
-
-  //DriveBase
-  private CANSparkMax motorLeftFront = new CANSparkMax(3, MotorType.kBrushless); //3
-  private CANSparkMax motorLeftBack = new CANSparkMax(4, MotorType.kBrushless); //4
-  private CANSparkMax motorRightFront = new CANSparkMax(2, MotorType.kBrushless); //2
-  private CANSparkMax motorRightBack = new CANSparkMax(5, MotorType.kBrushless); //5
+public class MecanumSubsystem extends SubsystemBase {
+  // DriveBase
+  private CANSparkMax motorLeftFront = new CANSparkMax(3, MotorType.kBrushless); // 3
+  private CANSparkMax motorLeftBack = new CANSparkMax(4, MotorType.kBrushless); // 4
+  private CANSparkMax motorRightFront = new CANSparkMax(2, MotorType.kBrushless); // 2
+  private CANSparkMax motorRightBack = new CANSparkMax(5, MotorType.kBrushless); // 5
 
   private RelativeEncoder encoderLeftFront;
   private RelativeEncoder encoderLeftBack;
   private RelativeEncoder encoderRightFront;
   private RelativeEncoder encoderRightBack;
-  
- // private TeleopCommand teleopCommand ;
-  
-  double maxSpeed = 1; 
 
-  double xAxis;
-  double yAxis;
-  double zAxis;
+  int aprilId = (int) SmartDashboard.getNumber("id", -1);
+  double aprilAngle = SmartDashboard.getNumber("angle", 1000);
+  double aprilDist = SmartDashboard.getNumber("dist", -1);
 
-  // boolean rightBumper;
-  // boolean leftBumper;
+  double maxSpeed = 1;
 
-  private MecanumDrive mecanumDrive = new MecanumDrive(motorLeftFront::set, motorLeftBack::set, motorRightFront::set, motorRightBack::set);
+  private MecanumDrive mecanumDrive = new MecanumDrive(motorLeftFront::set, motorLeftBack::set, motorRightFront::set,
+      motorRightBack::set);
 
   public MecanumSubsystem() {
     motorLeftFront.restoreFactoryDefaults();
@@ -58,18 +45,16 @@ public class MecanumSubsystem extends SubsystemBase{
     encoderLeftBack = motorLeftBack.getEncoder();
     encoderRightFront = motorRightFront.getEncoder();
     encoderRightBack = motorRightBack.getEncoder();
-  
+
     resetEncoders();
   }
 
   public void drive(double xSpeed, double ySpeed, double rotation) {
     System.err.println("In drive");
-    // System.err.println("xSpeed: " + xSpeed);
-    // System.err.println("ySpeed: " + ySpeed);
 
     motorLeftFront.setInverted(true);
     motorLeftBack.setInverted(true);
-    
+
     mecanumDrive.driveCartesian(ySpeed, xSpeed, rotation);
   }
 
@@ -77,7 +62,6 @@ public class MecanumSubsystem extends SubsystemBase{
     System.err.println(SmartDashboard.getNumber("id", -1));
     System.err.println(SmartDashboard.getNumber("angle", 1000));
     System.err.println(SmartDashboard.getNumber("dist", -1));
-    // System.err.println(SmartDashboard.getNumber("angleDist", -1));
   }
 
   public void stop() {
@@ -99,24 +83,45 @@ public class MecanumSubsystem extends SubsystemBase{
     encoderRightBack.setPosition(0);
   }
 
-  //Drive
-  public CANSparkMax getMotorLeftFront() { return motorLeftFront; }
-  public CANSparkMax getMotorLeftBack() { return motorLeftBack; }
-  public CANSparkMax getMotorRightFront() { return motorRightFront; }
-  public CANSparkMax getMotorRightBack() { return motorRightBack; }
+  // Drive
+  public CANSparkMax getMotorLeftFront() {
+    return motorLeftFront;
+  }
 
-  //Drive Encoders
-  public RelativeEncoder getEncoderLeftBack() { return encoderLeftBack; }
-  public RelativeEncoder getEncoderRightBack() { return encoderRightBack; }
-  public RelativeEncoder getEncoderLeftFront() { return encoderLeftFront; }
-  public RelativeEncoder getEncoderRightFront() { return encoderRightFront; }  
+  public CANSparkMax getMotorLeftBack() {
+    return motorLeftBack;
+  }
 
-  //Shooter
+  public CANSparkMax getMotorRightFront() {
+    return motorRightFront;
+  }
 
-  //Slide
+  public CANSparkMax getMotorRightBack() {
+    return motorRightBack;
+  }
 
-  //Climber
+  // Drive Encoders
+  public RelativeEncoder getEncoderLeftBack() {
+    return encoderLeftBack;
+  }
 
+  public RelativeEncoder getEncoderRightBack() {
+    return encoderRightBack;
+  }
+
+  public RelativeEncoder getEncoderLeftFront() {
+    return encoderLeftFront;
+  }
+
+  public RelativeEncoder getEncoderRightFront() {
+    return encoderRightFront;
+  }
+
+  // Shooter
+
+  // Slide
+
+  // Climber
 
   @Override
   public void periodic() {

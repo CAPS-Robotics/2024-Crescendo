@@ -13,10 +13,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import frc.robot.Constants.OperatorConstants;
 
-//3 motors 1 neo 2 talon
-
 public class ShooterSubsystem extends SubsystemBase {
-    /** Creates a new ExampleSubsystem. */
 
     MecanumSubsystem mec_subsystem = new MecanumSubsystem();
 
@@ -27,7 +24,6 @@ public class ShooterSubsystem extends SubsystemBase {
     private CANSparkMax backRollers = new CANSparkMax(11, MotorType.kBrushless);
 
     private RelativeEncoder frontRollersEncoder = frontRollers.getEncoder();
-    private RelativeEncoder backRollersEncoder = backRollers.getEncoder();
 
     // CANSparkMax
     public ShooterSubsystem() {
@@ -48,12 +44,9 @@ public class ShooterSubsystem extends SubsystemBase {
         backRollers.setInverted(false);
 
         frontRollers.set(OperatorConstants.shootAmpSpeed);
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (frontRollersEncoder.getVelocity() == OperatorConstants.shootAmpSpeed) {
+            backRollers.set(OperatorConstants.backRollersShootSpeed);
         }
-        backRollers.set(OperatorConstants.backRollersShootSpeed);
     }
 
     public void shootSpeaker() {
@@ -61,12 +54,9 @@ public class ShooterSubsystem extends SubsystemBase {
         backRollers.setInverted(false);
 
         frontRollers.set(OperatorConstants.shootSpeakerSpeed);
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (frontRollersEncoder.getVelocity() == OperatorConstants.shootSpeakerSpeed) {
+            backRollers.set(OperatorConstants.backRollersShootSpeed);
         }
-        backRollers.set(OperatorConstants.backRollersShootSpeed);
     }
 
     @Override
