@@ -17,13 +17,13 @@ public class ShooterSubsystem extends SubsystemBase {
 
     MecanumSubsystem mec_subsystem = new MecanumSubsystem();
 
-    DigitalInput topLimitSwitch = new DigitalInput(0);
-    DigitalInput bottomLimitSwitch = new DigitalInput(1);
+    DigitalInput noteDetector = new DigitalInput(2);
 
     private CANSparkMax frontRollers = new CANSparkMax(12, MotorType.kBrushless);
     private CANSparkMax backRollers = new CANSparkMax(11, MotorType.kBrushless);
 
     private RelativeEncoder frontRollersEncoder = frontRollers.getEncoder();
+    public boolean intake = false; 
 
     // CANSparkMax
     public ShooterSubsystem() {
@@ -61,7 +61,11 @@ public class ShooterSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
-        // This method will be called once per scheduler run
+        if(intake == true && !noteDetector.get()) {
+            intake();
+        } else if (noteDetector.get()) {
+            intake = false;
+        }
     }
 
     @Override

@@ -17,9 +17,6 @@ public class ClimberSubsystem extends SubsystemBase {
 
   MecanumSubsystem mec_subsystem = new MecanumSubsystem();
 
-  DigitalInput topLimitSwitch = new DigitalInput(2);
-  DigitalInput bottomLimitSwitch = new DigitalInput(3);
-
   private CANSparkMax climber = new CANSparkMax(12, MotorType.kBrushless);
 
   private RelativeEncoder climbEncoder = climber.getEncoder();
@@ -31,12 +28,14 @@ public class ClimberSubsystem extends SubsystemBase {
   }
 
   public void climb() {
-
+    climber.set(OperatorConstants.climbSpeed);
   }
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
+    if (climbEncoder.getPosition() >= OperatorConstants.maxClimbExtension) {
+      climber.set(0);
+    }
   }
 
   @Override

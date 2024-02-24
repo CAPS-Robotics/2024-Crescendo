@@ -29,7 +29,11 @@ public final class Constants {
     public static final double backRollersShootSpeed = 0.25;
 
     // Slide
-    public static final double slideSpeed = .1;
+    public static final double slideSpeed = 0.1;
     public static final double slidePosition2 = 0.8;
+
+    // Climb
+    public static final double maxClimbExtension = 10;
+    public static final double climbSpeed = 0.3;
   }
 }
