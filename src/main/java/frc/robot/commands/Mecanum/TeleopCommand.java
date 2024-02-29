@@ -7,6 +7,7 @@ package frc.robot.commands.Mecanum;
 import frc.robot.Constants.OperatorConstants;
 // import frc.robot.Dashboard;
 import frc.robot.subsystems.MecanumSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SlideSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -34,11 +35,13 @@ public class TeleopCommand extends Command {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private MecanumSubsystem mec_subsystem;
   private SlideSubsystem slideSubsystem;
+  private ShooterSubsystem shooterSubsystem;
   private OperatorConstants operatorConstants;
 
   public TeleopCommand(MecanumSubsystem subsystem, Joystick joystick) {
-    slideSubsystem = new SlideSubsystem();
+    // slideSubsystem = new SlideSubsystem();
     operatorConstants = new OperatorConstants();
+    shooterSubsystem = new ShooterSubsystem();
 
     this.mec_subsystem = subsystem;
     this.joystick = joystick;
@@ -75,15 +78,31 @@ public class TeleopCommand extends Command {
       mec_subsystem.endGame();
     }
 
-    if (aButton) { // TODO: Use Dpad
-      slideSubsystem.slideToPosition(operatorConstants.slideSpeed, 3);
-    } else if (bButton) {
-      slideSubsystem.slideToPosition(operatorConstants.slideSpeed, 2);
-    } else if (yButton) {
-      slideSubsystem.slideToPosition(operatorConstants.slideSpeed, 1);
-    }
+    // if (yButton) {
+    //   shooterSubsystem.intake();
+    // } else if (xButton) {
+    //   shooterSubsystem.shootAmp();
+    // } else if (bButton) {
+    //   shooterSubsystem.shootTrap();
+    // } else {
+    //   shooterSubsystem.stop();
+    // }
+
+    // if (aButton) { // TODO: Use Dpad
+    //   slideSubsystem.slideToPosition(operatorConstants.slideSpeed, 3);
+    // } else if (bButton) {
+    //   slideSubsystem.slideToPosition(operatorConstants.slideSpeed, 2);
+    // } else if (yButton) {
+    //   slideSubsystem.slideToPosition(operatorConstants.slideSpeed, 1);
+    // }
     mec_subsystem.drive(-1 * xAxis, yAxis, -1 * zAxis);
+
+    if (xButton){
+      // slideSubsystem.slide(0.25);
+    }
   }
+
+
 
   // Called once the command ends or is interrupted.
   @Override

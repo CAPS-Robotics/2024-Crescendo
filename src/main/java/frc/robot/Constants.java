@@ -23,17 +23,17 @@ public final class Constants {
     public static final double gearRatio = 12.571471214294434 / 4096;
 
     // Shooter
-    public static final double intakeSpeed = 0.25;
-    public static final double shootSpeakerSpeed = 0.75;
-    public static final double shootAmpSpeed = 0.5;
-    public static final double backRollersShootSpeed = 0.25;
+    public static final double intakeSpeed = 1000; //tmp
+    public static final double shootTrapSpeed = 2808;
+    public static final double shootAmpSpeed = 2000; //tmp
+    public static final double backRollersShootSpeed = 1000; //tmp
+
+    public static final double kP = .0002;
+    public static final double kI = 0;
+    public static final double kD = 0;    
 
     // Slide
-    public static final double slideSpeed = 0.1;
+    public static final double slideSpeed = .1;
     public static final double slidePosition2 = 0.8;
-
-    // Climb
-    public static final double maxClimbExtension = 10;
-    public static final double climbSpeed = 0.3;
   }
 }
