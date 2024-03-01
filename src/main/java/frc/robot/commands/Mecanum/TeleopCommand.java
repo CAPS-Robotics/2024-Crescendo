@@ -78,6 +78,33 @@ public class TeleopCommand extends Command {
       mec_subsystem.endGame();
     }
 
+
+    
+    System.err.println("xbutton value is" +  xButton);
+     System.err.println("joystick.getRawButtonReleased(1)" +  joystick.getRawButtonReleased(1));
+      System.err.println("joystick.getRawButtonPressed(1)" +  joystick.getRawButtonPressed(1));
+    if (xButton){
+    System.err.println("joystick pressed x");
+         counter++;
+          System.err.println("xbutton is pressed: Counter!!!!!!!!! = " + counter);
+        // slideSubsystem.slide(0.1, counter);
+ 
+     
+
+       
+        
+    
+    // }else if(yButton) {
+    //   //counter --;
+    //   System.err.println("xbutton is pressed: Counter = " + counter);
+    //  // slideSubsystem.slide(-0.1, counter);
+
+    }else if (aButton){
+      System.err.println("xbutton is pressed: Counter = " + counter);
+      counter = 0;
+      //slideSubsystem.slide(-0.1, counter);
+    }
+
     // if (yButton) {
     //   shooterSubsystem.intake();
     // } else if (xButton) {
