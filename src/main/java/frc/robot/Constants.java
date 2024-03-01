@@ -35,5 +35,8 @@ public final class Constants {
     // Slide
     public static final double slideSpeed = .1;
     public static final double slidePosition2 = 0.8;
+
+    public static final double climbSpeed = 200;
+    public static final double maxClimbExtension = 100;
   }
 }

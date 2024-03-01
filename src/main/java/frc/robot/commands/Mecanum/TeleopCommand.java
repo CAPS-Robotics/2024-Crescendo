@@ -41,7 +41,7 @@ public class TeleopCommand extends Command {
   public TeleopCommand(MecanumSubsystem subsystem, Joystick joystick) {
     // slideSubsystem = new SlideSubsystem();
     operatorConstants = new OperatorConstants();
-    shooterSubsystem = new ShooterSubsystem();
+    // shooterSubsystem = new ShooterSubsystem();
 
     this.mec_subsystem = subsystem;
     this.joystick = joystick;

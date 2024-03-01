@@ -42,12 +42,14 @@ public class AutonCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(aprilId == 12 && aprilAngle >= 89 && aprilAngle <= 91) { //7
-      SmartDashboard.putBoolean("April Present", true);
-    } else {
-      SmartDashboard.putBoolean("April Present", true);
+    if (aprilId > 0) {
+      if(aprilId == 12 && aprilAngle >= 89 && aprilAngle <= 91) { //7
+        SmartDashboard.putBoolean("April-Present", true);
+      } else {
+        SmartDashboard.putBoolean("April-Present", false);
+      }
+      mec_subsystem.drive(.25, 0, 180 - aprilAngle);
     }
-    mec_subsystem.drive(.25, 0, 180 - aprilAngle);
     // System.err.println(" in autoCommand Execute method");
     // System.err.println("Sp: " + setPoint);
     // // setPoint = 10;

@@ -84,11 +84,11 @@ public class ShooterSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() { // make no errors
-        if(intake == true && !noteDetector.get()) {
-            intake();
-        } else if (noteDetector.get()) {
-            intake = false;
-        }
+        // if(intake == true && !noteDetector.get()) {
+        //     intake();
+        // } else if (noteDetector.get()) {
+        //     intake = false;
+        // }
     }
 
     @Override

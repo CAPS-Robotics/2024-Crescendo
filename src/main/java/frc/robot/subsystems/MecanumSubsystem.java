@@ -16,9 +16,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class MecanumSubsystem extends SubsystemBase {
   // DriveBase
-  private CANSparkMax motorLeftFront = new CANSparkMax(12, MotorType.kBrushless); // 3
+  private CANSparkMax motorLeftFront = new CANSparkMax(3, MotorType.kBrushless); // 3
   private CANSparkMax motorLeftBack = new CANSparkMax(4, MotorType.kBrushless); // 4
-  private CANSparkMax motorRightFront = new CANSparkMax(11, MotorType.kBrushless); // 2
+  private CANSparkMax motorRightFront = new CANSparkMax(2, MotorType.kBrushless); // 2
   private CANSparkMax motorRightBack = new CANSparkMax(5, MotorType.kBrushless); // 5
 
   private RelativeEncoder encoderLeftFront;
