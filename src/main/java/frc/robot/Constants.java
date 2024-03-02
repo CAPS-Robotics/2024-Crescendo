@@ -38,5 +38,12 @@ public final class Constants {
 
     public static final double climbSpeed = 200;
     public static final double maxClimbExtension = 100;
+
+    //Speeds
+    public static final double speedToClimb = .5;
+  }
+
+  public static class Distances {
+    public static final double climbDist = 50; //in.
   }
 }

@@ -17,7 +17,7 @@ public class ClimberSubsystem extends SubsystemBase {
 
   MecanumSubsystem mec_subsystem = new MecanumSubsystem();
 
-  private CANSparkMax climber = new CANSparkMax(12, MotorType.kBrushless);
+  private CANSparkMax climber = new CANSparkMax(8, MotorType.kBrushless);
 
   private RelativeEncoder climbEncoder = climber.getEncoder();
 

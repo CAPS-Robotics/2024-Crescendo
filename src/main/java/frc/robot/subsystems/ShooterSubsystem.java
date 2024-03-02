@@ -21,7 +21,7 @@ public class ShooterSubsystem extends SubsystemBase {
     // MecanumSubsystem mec_subsystem = new MecanumSubsystem();
     OperatorConstants operatorConstants = new OperatorConstants();
 
-    DigitalInput topLimitSwitch = new DigitalInput(4);
+    DigitalInput topLimitSwitch = new DigitalInput(3);
 
     private CANSparkMax frontRollers = new CANSparkMax(12, MotorType.kBrushless);
     private CANSparkMax backRollers = new CANSparkMax(11, MotorType.kBrushless);

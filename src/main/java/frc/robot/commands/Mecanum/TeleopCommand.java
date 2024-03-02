@@ -5,12 +5,15 @@
 package frc.robot.commands.Mecanum;
 
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.Constants.Distances;
 // import frc.robot.Dashboard;
 import frc.robot.subsystems.MecanumSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SlideSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.POVButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /** An example command that uses an example subsystem. */
 public class TeleopCommand extends Command {
@@ -32,16 +35,22 @@ public class TeleopCommand extends Command {
   boolean leftBumper;
   boolean rightBumper;
 
+  int aprilId = -1;
+  double aprilAngle = 1000;
+  double aprilDist = -1;
+
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private MecanumSubsystem mec_subsystem;
   private SlideSubsystem slideSubsystem;
   private ShooterSubsystem shooterSubsystem;
   private OperatorConstants operatorConstants;
+  private Distances distances;
 
   public TeleopCommand(MecanumSubsystem subsystem, Joystick joystick) {
-    // slideSubsystem = new SlideSubsystem();
+    //slideSubsystem = new SlideSubsystem();
     operatorConstants = new OperatorConstants();
-    // shooterSubsystem = new ShooterSubsystem();
+    distances = new Distances();
+    //this.shooterSubsystem = shootSubsystem;
 
     this.mec_subsystem = subsystem;
     this.joystick = joystick;
@@ -77,7 +86,33 @@ public class TeleopCommand extends Command {
       System.err.println("Endgame");
       mec_subsystem.endGame();
     }
-    if (pov == 270) {
+
+    //System.err.println(SmartDashboard.getNumber("id", -1));
+
+    aprilId = (int) SmartDashboard.getNumber("id", -1);
+    aprilAngle = SmartDashboard.getNumber("angle", 1000);
+    aprilDist = SmartDashboard.getNumber("dist", -1);
+    //  if (yButton) {
+    //    shooterSubsystem.intake();
+    //  } else if (xButton) {
+    //    shooterSubsystem.shootAmp();
+    //  } else if (bButton) {
+    //    shooterSubsystem.shootTrap();
+    //  } else {
+    //    shooterSubsystem.stop();
+    //  }
+     
+    //  if(SmartDashboard.getNumber("id", -1)!=-1.0 & SmartDashboard.getNumber("id", -1)!=-2.0){
+    //   shooterSubsystem.intake();
+    //  } else {
+    //    shooterSubsystem.stop();
+    //  }
+
+    if (aButton) {
+      System.err.println("Endgame");
+      mec_subsystem.endGame();
+    }
+    if (pov == 270) { // define pov
       System.err.println("0");
       slideSubsystem.pos0();
     } else if (pov == 180) {
@@ -89,28 +124,38 @@ public class TeleopCommand extends Command {
     } else {
       slideSubsystem.stop();
     }
-    
-    // if (yButton) {
-    //   shooterSubsystem.intake();
-    // } else if (xButton) {
-    //   shooterSubsystem.shootAmp();
-    // } else if (bButton) {
-    //   shooterSubsystem.shootTrap();
-    // } else {
-    //   shooterSubsystem.stop();
-    // }
 
-    // if (aButton) { // TODO: Use Dpad
-    //   slideSubsystem.slideToPosition(operatorConstants.slideSpeed, 3);
-    // } else if (bButton) {
-    //   slideSubsystem.slideToPosition(operatorConstants.slideSpeed, 2);
-    // } else if (yButton) {
-    //   slideSubsystem.slideToPosition(operatorConstants.slideSpeed, 1);
-    // }
     mec_subsystem.drive(-1 * xAxis, yAxis, -1 * zAxis);
+
+    System.err.println(aprilId);
+
+    if (aprilId !=- 1.0 && aprilId !=- 2.0) {
+      if (leftBumper) {
+        if(aprilId == 12) {
+          mecToDist(aprilId, distances.climbDist);
+        } else {
+          System.err.println("Dont see 12");
+        }
+      } else {
+        mec_subsystem.drive(0,0,0);
+      }
+    } else {
+      mec_subsystem.drive(0,0,0);
+    }
   }
 
-
+  public void mecToDist(int id, double distToReach) {
+    System.err.println(id + ": To reach: " + distToReach + "Current dist: " + aprilDist);
+    if(aprilId == id) {
+      if(aprilDist-1 > distToReach) {
+        mec_subsystem.drive(0, operatorConstants.speedToClimb, 0);
+      } else if (aprilDist+1 < distToReach) {
+        mec_subsystem.drive(0, -1 * operatorConstants.speedToClimb, 0);
+      } else {
+        System.err.println("Stopped");
+      }
+    }
+  } 
 
   // Called once the command ends or is interrupted.
   @Override
