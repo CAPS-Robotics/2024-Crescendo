@@ -77,34 +77,19 @@ public class TeleopCommand extends Command {
       System.err.println("Endgame");
       mec_subsystem.endGame();
     }
-
-
-    
-    System.err.println("xbutton value is" +  xButton);
-     System.err.println("joystick.getRawButtonReleased(1)" +  joystick.getRawButtonReleased(1));
-      System.err.println("joystick.getRawButtonPressed(1)" +  joystick.getRawButtonPressed(1));
-    if (xButton){
-    System.err.println("joystick pressed x");
-         counter++;
-          System.err.println("xbutton is pressed: Counter!!!!!!!!! = " + counter);
-        // slideSubsystem.slide(0.1, counter);
- 
-     
-
-       
-        
-    
-    // }else if(yButton) {
-    //   //counter --;
-    //   System.err.println("xbutton is pressed: Counter = " + counter);
-    //  // slideSubsystem.slide(-0.1, counter);
-
-    }else if (aButton){
-      System.err.println("xbutton is pressed: Counter = " + counter);
-      counter = 0;
-      //slideSubsystem.slide(-0.1, counter);
+    if (pov == 270) {
+      System.err.println("0");
+      slideSubsystem.pos0();
+    } else if (pov == 180) {
+      System.err.println("1");
+      slideSubsystem.pos1();
+    } else if (pov == 90) {
+      System.err.println("2");
+      slideSubsystem.pos2();
+    } else {
+      slideSubsystem.stop();
     }
-
+    
     // if (yButton) {
     //   shooterSubsystem.intake();
     // } else if (xButton) {
@@ -123,10 +108,6 @@ public class TeleopCommand extends Command {
     //   slideSubsystem.slideToPosition(operatorConstants.slideSpeed, 1);
     // }
     mec_subsystem.drive(-1 * xAxis, yAxis, -1 * zAxis);
-
-    if (xButton){
-      // slideSubsystem.slide(0.25);
-    }
   }
 
 
