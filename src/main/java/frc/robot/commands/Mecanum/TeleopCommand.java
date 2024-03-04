@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class TeleopCommand extends Command {
 
   Joystick joystick;
+  int pov;
   double speed;
   double xAxis;
   double yAxis;
@@ -67,6 +68,8 @@ public class TeleopCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    pov = joystick.getPOV();
+
     xAxis = joystick.getX(); // Strafe
     yAxis = joystick.getY(); // Front and Back
     zAxis = joystick.getZ(); // Turning
