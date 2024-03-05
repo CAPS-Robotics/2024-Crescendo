@@ -21,6 +21,10 @@ public final class Constants {
     public static final int kDriverControllerPort = 0;
     // Auto
     public static final double gearRatio = 12.571471214294434 / 4096;
+    public static final double movementSpeed = 0.75;
+    public static final double inchToRev = 1/(6*Math.PI);
+    public static final double ftToRev = 2/Math.PI;
+    public static final double distToAmp = 8.45; //ft
 
     // Shooter
     public static final double intakeSpeed = 1000; //tmp

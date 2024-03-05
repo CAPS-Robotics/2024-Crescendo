@@ -80,6 +80,22 @@ public class MecanumSubsystem extends SubsystemBase {
     encoderRightBack.setPosition(0);
   }
 
+  public CANSparkMax getMotorLeftFront() {
+    return motorLeftFront;
+  }
+
+  public CANSparkMax getMotorLeftBack() {
+    return motorLeftFront;
+  }
+
+  public CANSparkMax getMotorRightFront() {
+    return motorLeftFront;
+  }
+
+  public CANSparkMax getMotorRightBack() {
+    return motorLeftFront;
+  }
+
   @Override
   public void periodic() {
     SmartDashboard.putNumber("Left Front Position", encoderLeftFront.getPosition());
