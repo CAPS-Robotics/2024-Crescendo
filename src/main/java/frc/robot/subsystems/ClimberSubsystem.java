@@ -9,6 +9,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import frc.robot.Constants.OperatorConstants;
@@ -16,8 +17,9 @@ import frc.robot.Constants.OperatorConstants;
 public class ClimberSubsystem extends SubsystemBase {
 
   MecanumSubsystem mec_subsystem = new MecanumSubsystem();
+  OperatorConstants operatorConstants = new OperatorConstants();
 
-  private CANSparkMax climber = new CANSparkMax(8, MotorType.kBrushless);
+  private CANSparkMax climber = new CANSparkMax(9, MotorType.kBrushless);
 
   private RelativeEncoder climbEncoder = climber.getEncoder();
 
@@ -36,6 +38,10 @@ public class ClimberSubsystem extends SubsystemBase {
     if (climbEncoder.getPosition() >= OperatorConstants.maxClimbExtension) {
       climber.set(0);
     }
+  }
+
+  public void endgame() {
+    
   }
 
   @Override

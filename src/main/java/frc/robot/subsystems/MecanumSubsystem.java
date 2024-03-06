@@ -16,10 +16,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class MecanumSubsystem extends SubsystemBase {
   // DriveBase
-  private CANSparkMax motorLeftFront = new CANSparkMax(3, MotorType.kBrushless); // 3
-  private CANSparkMax motorLeftBack = new CANSparkMax(4, MotorType.kBrushless); // 4 
-  private CANSparkMax motorRightFront = new CANSparkMax(2, MotorType.kBrushless); // 2
-  private CANSparkMax motorRightBack = new CANSparkMax(5, MotorType.kBrushless); // 5
+  private CANSparkMax motorLeftFront = new CANSparkMax(5, MotorType.kBrushless); // 5
+  private CANSparkMax motorLeftBack = new CANSparkMax(2, MotorType.kBrushless); // 2
+  private CANSparkMax motorRightFront = new CANSparkMax(4, MotorType.kBrushless); // 4
+  private CANSparkMax motorRightBack = new CANSparkMax(3, MotorType.kBrushless); // 3
 
   private RelativeEncoder encoderLeftFront;
   private RelativeEncoder encoderLeftBack;
@@ -48,17 +48,15 @@ public class MecanumSubsystem extends SubsystemBase {
     resetEncoders();
   }
 
+  public double avgEncoderPosition() {
+    return (encoderLeftFront.getPosition() + encoderLeftBack.getPosition() + encoderRightFront.getPosition() + encoderRightBack.getPosition())/4;
+  }
+
   public void drive(double xSpeed, double ySpeed, double rotation) {
     motorLeftFront.setInverted(true);
     motorLeftBack.setInverted(true);
 
     mecanumDrive.driveCartesian(ySpeed, xSpeed, rotation);
-  }
-
-  public void endGame() {
-    System.err.println(SmartDashboard.getNumber("id", -1));
-    System.err.println(SmartDashboard.getNumber("angle", 1000));
-    System.err.println(SmartDashboard.getNumber("dist", -1));
   }
 
   public void stop() {

@@ -5,7 +5,6 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkLowLevel.MotorType;
-import com.fasterxml.jackson.databind.util.PrimitiveArrayBuilder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 
@@ -21,8 +20,7 @@ public class SlideSubsystem extends SubsystemBase {
   DigitalInput firstPosSenseor = new DigitalInput(1);
   DigitalInput secondPosSenseor = new DigitalInput(2);
 
-  private CANSparkMax slideMotor = new CANSparkMax(12, MotorType.kBrushless);
-  public RelativeEncoder encoderTopSlide;
+  private CANSparkMax slideMotor = new CANSparkMax(8, MotorType.kBrushless);
   public RelativeEncoder encoderBottomSlide;
 
   private boolean fromBottom = true;

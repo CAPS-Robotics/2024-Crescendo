@@ -21,6 +21,8 @@ public final class Constants {
     public static final int kDriverControllerPort = 0;
     // Auto
     public static final double gearRatio = 12.571471214294434 / 4096;
+    public static final double inchToRev = 1/(6*Math.PI);
+    public static final double ftToRev = 2/Math.PI;
 
     // Shooter
     public static final double intakeSpeed = 1000; //tmp
@@ -36,10 +38,15 @@ public final class Constants {
     public static final double slideSpeed = .1;
     public static final double slidePosition2 = 0.8;
 
-    public static final double climbSpeed = 200;
-    public static final double maxClimbExtension = 100;
+    //Endgame 
+    public static final double heightCamTo12 = 48 - 15;
+    public static final double distToChain = 20;
 
-    //Speeds
+    // Climb
+    public static final double climbSpeed = .5;
+    public static final double maxClimbExtension = 270/360;
+
+    // Speeds
     public static final double speedToClimb = .5;
   }
 

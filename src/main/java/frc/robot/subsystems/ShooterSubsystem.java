@@ -23,18 +23,18 @@ public class ShooterSubsystem extends SubsystemBase {
 
     DigitalInput topLimitSwitch = new DigitalInput(3);
 
-    private CANSparkMax frontRollers = new CANSparkMax(12, MotorType.kBrushless);
-    private CANSparkMax backRollers = new CANSparkMax(11, MotorType.kBrushless);
+    private CANSparkMax shooterRollers = new CANSparkMax(6, MotorType.kBrushless);
+    private CANSparkMax shooterWheel = new CANSparkMax(7, MotorType.kBrushless);
     
-    private SparkPIDController frontPidController = frontRollers.getPIDController();
-    private SparkPIDController backPidController = backRollers.getPIDController();
+    private SparkPIDController frontPidController = shooterRollers.getPIDController();
+    private SparkPIDController backPidController = shooterWheel.getPIDController();
 
-    private RelativeEncoder frontRollersEncoder = frontRollers.getEncoder();
+    private RelativeEncoder frontRollersEncoder = shooterRollers.getEncoder();
 
     // CANSparkMax
     public ShooterSubsystem() {
-        frontRollers.restoreFactoryDefaults();
-        backRollers.restoreFactoryDefaults();
+        shooterRollers.restoreFactoryDefaults();
+        shooterWheel.restoreFactoryDefaults();
 
         frontPidController.setP(operatorConstants.kP);
         frontPidController.setI(operatorConstants.kI);
@@ -48,21 +48,21 @@ public class ShooterSubsystem extends SubsystemBase {
     }
 
     public void stop() {
-        frontRollers.set(0);
-        backRollers.set(0);
+        shooterRollers.set(0);
+        shooterWheel.set(0);
     }
 
     public void intake() {
-        frontRollers.setInverted(true);
-        backRollers.setInverted(true);
+        shooterRollers.setInverted(true);
+        shooterWheel.setInverted(true);
 
         frontPidController.setReference(operatorConstants.intakeSpeed, CANSparkMax.ControlType.kVelocity);
         backPidController.setReference(operatorConstants.intakeSpeed, CANSparkMax.ControlType.kVelocity);
     }
 
     public void shootAmp() {
-        frontRollers.setInverted(false);
-        backRollers.setInverted(false);
+        shooterRollers.setInverted(false);
+        shooterWheel.setInverted(false);
 
         frontPidController.setReference(operatorConstants.shootTrapSpeed, CANSparkMax.ControlType.kVelocity);
         System.err.println(frontRollersEncoder.getVelocity());
@@ -72,8 +72,8 @@ public class ShooterSubsystem extends SubsystemBase {
     }
 
     public void shootTrap() {
-        frontRollers.setInverted(false);
-        backRollers.setInverted(false);
+        shooterRollers.setInverted(false);
+        shooterWheel.setInverted(false);
 
         frontPidController.setReference(operatorConstants.shootTrapSpeed, CANSparkMax.ControlType.kVelocity);
         System.err.println(frontRollersEncoder.getVelocity());

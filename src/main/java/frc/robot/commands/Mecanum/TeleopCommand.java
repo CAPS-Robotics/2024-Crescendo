@@ -6,6 +6,7 @@ package frc.robot.commands.Mecanum;
 
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.Constants.Distances;
+import frc.robot.subsystems.ClimberSubsystem;
 // import frc.robot.Dashboard;
 import frc.robot.subsystems.MecanumSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -19,6 +20,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class TeleopCommand extends Command {
 
   Joystick joystick;
+  int pov;
   double speed;
   double xAxis;
   double yAxis;
@@ -35,23 +37,29 @@ public class TeleopCommand extends Command {
   boolean leftBumper;
   boolean rightBumper;
 
+  double distNow;
+  double distToMove;
+
   int aprilId = -1;
   double aprilAngle = 1000;
   double aprilDist = -1;
 
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
+  private ClimberSubsystem climbSubsystem;
   private MecanumSubsystem mec_subsystem;
   private SlideSubsystem slideSubsystem;
   private ShooterSubsystem shooterSubsystem;
   private OperatorConstants operatorConstants;
   private Distances distances;
 
-  public TeleopCommand(MecanumSubsystem subsystem, Joystick joystick) {
-    //slideSubsystem = new SlideSubsystem();
+  public TeleopCommand(MecanumSubsystem subsystem,
+                         ClimberSubsystem climbSubsystem, SlideSubsystem slideSubsystem, ShooterSubsystem shootSubsystem, Joystick joystick) {
     operatorConstants = new OperatorConstants();
     distances = new Distances();
-    //this.shooterSubsystem = shootSubsystem;
 
+    this.shooterSubsystem = shootSubsystem;
+    this.slideSubsystem = slideSubsystem; 
+    this.climbSubsystem = climbSubsystem;
     this.mec_subsystem = subsystem;
     this.joystick = joystick;
     // Use addRequirements() here to declare subsystem dependencies.
@@ -62,11 +70,14 @@ public class TeleopCommand extends Command {
   @Override
   public void initialize() {
     speed = 0;
+    pov = 0;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    pov = joystick.getPOV();
+
     xAxis = joystick.getX(); // Strafe
     yAxis = joystick.getY(); // Front and Back
     zAxis = joystick.getZ(); // Turning
@@ -82,36 +93,33 @@ public class TeleopCommand extends Command {
     leftBumper = joystick.getRawButton(5);
     rightBumper = joystick.getRawButton(6);
 
-    if (aButton) {
-      System.err.println("Endgame");
-      mec_subsystem.endGame();
-    }
-
     //System.err.println(SmartDashboard.getNumber("id", -1));
 
     aprilId = (int) SmartDashboard.getNumber("id", -1);
     aprilAngle = SmartDashboard.getNumber("angle", 1000);
     aprilDist = SmartDashboard.getNumber("dist", -1);
-    //  if (yButton) {
-    //    shooterSubsystem.intake();
-    //  } else if (xButton) {
-    //    shooterSubsystem.shootAmp();
-    //  } else if (bButton) {
-    //    shooterSubsystem.shootTrap();
-    //  } else {
-    //    shooterSubsystem.stop();
-    //  }
-     
-    //  if(SmartDashboard.getNumber("id", -1)!=-1.0 & SmartDashboard.getNumber("id", -1)!=-2.0){
-    //   shooterSubsystem.intake();
-    //  } else {
-    //    shooterSubsystem.stop();
-    //  }
-
-    if (aButton) {
-      System.err.println("Endgame");
-      mec_subsystem.endGame();
+    if (yButton) {
+      shooterSubsystem.intake();
+    } else if (xButton) {
+      shooterSubsystem.shootAmp();
+    } else if (bButton) {
+      shooterSubsystem.shootTrap();
+    } else {
+    // shooterSubsystem.stop();
     }
+     
+     if (aButton) {
+      System.err.println("Endgame");
+      if(aprilId == 12) {
+        distNow = Math.sqrt(Math.pow(aprilDist, 2) - Math.pow(operatorConstants.heightCamTo12, 2)); 
+        distToMove = distNow - operatorConstants.distToChain;
+      } else { //TODO: add without april tag movement
+        if(mec_subsystem.avgEncoderPosition() <= operatorConstants.inchToRev*distToMove) {
+          climbSubsystem.climb();
+        }
+      }
+    }
+    System.out.println("POV" + pov);
     if (pov == 270) { // define pov
       System.err.println("0");
       slideSubsystem.pos0();
@@ -124,6 +132,11 @@ public class TeleopCommand extends Command {
     } else {
       slideSubsystem.stop();
     }
+     if(SmartDashboard.getNumber("id", -1)!=-1.0 & SmartDashboard.getNumber("id", -1)!=-2.0){
+      shooterSubsystem.intake();
+     } else {
+       shooterSubsystem.stop();
+     }
 
     mec_subsystem.drive(-1 * xAxis, yAxis, -1 * zAxis);
 
@@ -132,7 +145,8 @@ public class TeleopCommand extends Command {
     if (aprilId !=- 1.0 && aprilId !=- 2.0) {
       if (leftBumper) {
         if(aprilId == 12) {
-          mecToDist(aprilId, distances.climbDist);
+          
+
         } else {
           System.err.println("Dont see 12");
         }
