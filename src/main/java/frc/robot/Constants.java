@@ -25,10 +25,10 @@ public final class Constants {
     public static final double ftToRev = 2/Math.PI;
 
     // Shooter
-    public static final double intakeSpeed = 1000; //tmp
-    public static final double shootTrapSpeed = 2808;
-    public static final double shootAmpSpeed = 2000; //tmp
-    public static final double backRollersShootSpeed = 1000; //tmp
+    public static final double intakeSpeed = .25; //tmp
+    public static final double shootTrapSpeed = .75; //2808 rpm
+    public static final double shootAmpSpeed = .5; //tmp
+    public static final double backRollersShootSpeed = .35; //tmp
 
     public static final double kP = .0002;
     public static final double kI = 0;

@@ -23,8 +23,8 @@ public class ShooterSubsystem extends SubsystemBase {
 
     DigitalInput topLimitSwitch = new DigitalInput(3);
 
-    private CANSparkMax shooterRollers = new CANSparkMax(6, MotorType.kBrushless);
-    private CANSparkMax shooterWheel = new CANSparkMax(7, MotorType.kBrushless);
+    private CANSparkMax shooterRollers = new CANSparkMax(6, MotorType.kBrushless); //front
+    private CANSparkMax shooterWheel = new CANSparkMax(7, MotorType.kBrushless); //back
     
     private SparkPIDController frontPidController = shooterRollers.getPIDController();
     private SparkPIDController backPidController = shooterWheel.getPIDController();
@@ -53,6 +53,7 @@ public class ShooterSubsystem extends SubsystemBase {
     }
 
     public void intake() {
+        System.err.println("in shoot intake");
         shooterRollers.setInverted(true);
         shooterWheel.setInverted(true);
 
@@ -61,6 +62,7 @@ public class ShooterSubsystem extends SubsystemBase {
     }
 
     public void shootAmp() {
+        System.err.println("in shoot Amp");
         shooterRollers.setInverted(false);
         shooterWheel.setInverted(false);
 
@@ -72,6 +74,7 @@ public class ShooterSubsystem extends SubsystemBase {
     }
 
     public void shootTrap() {
+        System.err.println("in shoot Trap");
         shooterRollers.setInverted(false);
         shooterWheel.setInverted(false);
 

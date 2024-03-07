@@ -52,12 +52,12 @@ public class TeleopCommand extends Command {
   private OperatorConstants operatorConstants;
   private Distances distances;
 
-  public TeleopCommand(MecanumSubsystem subsystem,
+  public TeleopCommand(MecanumSubsystem subsystem, ShooterSubsystem shoot_Subsystem,
                          Joystick joystick) {
     operatorConstants = new OperatorConstants();
     distances = new Distances();
 
-    // this.shooterSubsystem = shootSubsystem;
+    this.shooterSubsystem = shoot_Subsystem;
     // this.slideSubsystem = slideSubsystem; 
     // this.climbSubsystem = climbSubsystem;
     this.mec_subsystem = subsystem;
@@ -103,15 +103,15 @@ public class TeleopCommand extends Command {
     aprilId = (int) SmartDashboard.getNumber("id", -1);
     aprilAngle = SmartDashboard.getNumber("angle", 1000);
     aprilDist = SmartDashboard.getNumber("dist", -1);
-    // if (yButton) {
-    //   shooterSubsystem.intake();
-    // } else if (xButton) {
-    //   shooterSubsystem.shootAmp();
-    // } else if (bButton) {
-    //   shooterSubsystem.shootTrap();
-    // } else {
-    // // shooterSubsystem.stop();
-    // }
+    if (yButton) {
+      shooterSubsystem.intake();
+    } else if (xButton) {
+      shooterSubsystem.shootAmp();
+    } else if (bButton) {
+      shooterSubsystem.shootTrap();
+    } else {
+    // shooterSubsystem.stop();
+    }
      
     //  if (aButton) {
     //   System.err.println("Endgame");
