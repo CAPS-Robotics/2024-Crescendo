@@ -8,6 +8,7 @@ import frc.robot.Constants.AutoConstants;
 // import frc.robot.Dashboard;
 import frc.robot.subsystems.MecanumSubsystem;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 
@@ -51,11 +52,26 @@ public class AutonCommand extends Command {
       mec_subsystem.drive(autoConstants.movementSpeed, 0, 0);
     }
 
+    // // Define target angle and tolerance
+    // double targetAngle = 90.0; // Target 90 degrees
+    // double tolerance = 5.0; // Tolerance of +/- 5 degrees
+
+    // // Read initial angle from gyroscope
+    // double initialAngle = Gyro.getAngle();
+
     if (DriverStation.getAlliance().equals("Red")) {
       if (DriverStation.getLocation().getAsInt() == 1 || DriverStation.getLocation().getAsInt() == 2) {
+        // Loop until the robot turns 90 degrees
+        // while (Math.abs(gyro.getAngle() - initialAngle) < targetAngle - tolerance) {
+        // // Continue turning
+        // mec_subsystem.drive(0, 0, rotationSpeed);
+        // }
+
         if (aprilDist <= autoConstants.distToAmp * 12) {
           mec_subsystem.drive(autoConstants.movementSpeed, 0, 0);
         }
+      } else if (DriverStation.getLocation().getAsInt() == 3) {
+
       }
     } else if (DriverStation.getAlliance().equals("Blue")) {
 
@@ -71,22 +87,6 @@ public class AutonCommand extends Command {
       }
       mec_subsystem.drive(.25, 0, 180 - aprilAngle);
     }
-    // System.err.println(" in autoCommand Execute method");
-    // System.err.println("Sp: " + setPoint);
-    // // setPoint = 10;
-    // totalRotations = ((setPoint * 12) / (6 * Math.PI)) * 12.57;
-    // System.err.println("total Rotations: " + totalRotations);
-
-    // error = totalRotations - mec_subsystem.getEncoderLeftBack().getPosition();
-    // System.err.println("Error:" + error);
-    // kp = 1 / totalRotations;
-    // outputSpeed = error * kp;
-    // System.err.println("OutSpeed In Auto: " + outputSpeed);
-    // if (outputSpeed > 0) {
-    // mec_subsystem.drive(0, outputSpeed, 0);
-    // } else {
-    // System.err.println("STOP!");
-    // }
   }
 
   // Called once the command ends or is interrupted.
