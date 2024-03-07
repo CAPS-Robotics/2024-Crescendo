@@ -15,35 +15,37 @@ import edu.wpi.first.wpilibj2.command.PIDSubsystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.Constants.ShooterConstants;
 
 public class ShooterSubsystem extends SubsystemBase {
 
     // MecanumSubsystem mec_subsystem = new MecanumSubsystem();
-    OperatorConstants operatorConstants = new OperatorConstants();
+    ShooterConstants shooterConstants = new ShooterConstants();
 
     DigitalInput topLimitSwitch = new DigitalInput(3);
 
-    private CANSparkMax shooterRollers = new CANSparkMax(6, MotorType.kBrushless); //front
-    private CANSparkMax shooterWheel = new CANSparkMax(7, MotorType.kBrushless); //back
-    
+    private CANSparkMax shooterRollers = new CANSparkMax(6, MotorType.kBrushless); // front
+    private CANSparkMax shooterWheel = new CANSparkMax(7, MotorType.kBrushless); // back
+
     private SparkPIDController frontPidController = shooterRollers.getPIDController();
     private SparkPIDController backPidController = shooterWheel.getPIDController();
 
     private RelativeEncoder frontRollersEncoder = shooterRollers.getEncoder();
 
     // CANSparkMax
+    @SuppressWarnings("static-access")
     public ShooterSubsystem() {
         shooterRollers.restoreFactoryDefaults();
         shooterWheel.restoreFactoryDefaults();
 
-        frontPidController.setP(operatorConstants.kP);
-        frontPidController.setI(operatorConstants.kI);
-        frontPidController.setD(operatorConstants.kD);
+        frontPidController.setP(shooterConstants.kP);
+        frontPidController.setI(shooterConstants.kI);
+        frontPidController.setD(shooterConstants.kD);
         frontPidController.setOutputRange(-1, 1);
 
-        backPidController.setP(operatorConstants.kP);
-        backPidController.setI(operatorConstants.kI);
-        backPidController.setD(operatorConstants.kD);
+        backPidController.setP(shooterConstants.kP);
+        backPidController.setI(shooterConstants.kI);
+        backPidController.setD(shooterConstants.kD);
         backPidController.setOutputRange(-1, 1);
     }
 
@@ -57,8 +59,8 @@ public class ShooterSubsystem extends SubsystemBase {
         shooterRollers.setInverted(true);
         shooterWheel.setInverted(true);
 
-        frontPidController.setReference(operatorConstants.intakeSpeed, CANSparkMax.ControlType.kVelocity);
-        backPidController.setReference(operatorConstants.intakeSpeed, CANSparkMax.ControlType.kVelocity);
+        frontPidController.setReference(shooterConstants.intakeSpeed, CANSparkMax.ControlType.kVelocity);
+        backPidController.setReference(shooterConstants.intakeSpeed, CANSparkMax.ControlType.kVelocity);
     }
 
     public void shootAmp() {
@@ -66,10 +68,10 @@ public class ShooterSubsystem extends SubsystemBase {
         shooterRollers.setInverted(false);
         shooterWheel.setInverted(false);
 
-        frontPidController.setReference(operatorConstants.shootTrapSpeed, CANSparkMax.ControlType.kVelocity);
+        frontPidController.setReference(shooterConstants.shootTrapSpeed, CANSparkMax.ControlType.kVelocity);
         System.err.println(frontRollersEncoder.getVelocity());
-        if (frontRollersEncoder.getVelocity() <= operatorConstants.shootTrapSpeed) {
-            backPidController.setReference(operatorConstants.backRollersShootSpeed, CANSparkMax.ControlType.kVelocity);
+        if (frontRollersEncoder.getVelocity() <= shooterConstants.shootTrapSpeed) {
+            backPidController.setReference(shooterConstants.backRollersShootSpeed, CANSparkMax.ControlType.kVelocity);
         }
     }
 
@@ -78,19 +80,19 @@ public class ShooterSubsystem extends SubsystemBase {
         shooterRollers.setInverted(false);
         shooterWheel.setInverted(false);
 
-        frontPidController.setReference(operatorConstants.shootTrapSpeed, CANSparkMax.ControlType.kVelocity);
+        frontPidController.setReference(shooterConstants.shootTrapSpeed, CANSparkMax.ControlType.kVelocity);
         System.err.println(frontRollersEncoder.getVelocity());
-        if (frontRollersEncoder.getVelocity() <= operatorConstants.shootTrapSpeed) {
-            backPidController.setReference(operatorConstants.backRollersShootSpeed, CANSparkMax.ControlType.kVelocity);
+        if (frontRollersEncoder.getVelocity() <= shooterConstants.shootTrapSpeed) {
+            backPidController.setReference(shooterConstants.backRollersShootSpeed, CANSparkMax.ControlType.kVelocity);
         }
     }
 
     @Override
     public void periodic() { // make no errors
         // if(intake == true && !noteDetector.get()) {
-        //     intake();
+        // intake();
         // } else if (noteDetector.get()) {
-        //     intake = false;
+        // intake = false;
         // }
     }
 

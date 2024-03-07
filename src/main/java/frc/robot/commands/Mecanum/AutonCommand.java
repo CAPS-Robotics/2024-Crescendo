@@ -4,8 +4,10 @@
 
 package frc.robot.commands.Mecanum;
 
+import frc.robot.Constants.AutoConstants;
 // import frc.robot.Dashboard;
 import frc.robot.subsystems.MecanumSubsystem;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 
@@ -22,6 +24,8 @@ public class AutonCommand extends Command {
   double aprilAngle = SmartDashboard.getNumber("angle", 1000);
   double aprilDist = SmartDashboard.getNumber("dist", -1);
 
+  AutoConstants autoConstants = new AutoConstants();
+
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private MecanumSubsystem mec_subsystem;
 
@@ -36,14 +40,31 @@ public class AutonCommand extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
+
   }
 
   // Called every time the scheduler runs while the command is scheduled.
+  @SuppressWarnings("static-access")
   @Override
   public void execute() {
+    if (mec_subsystem.avgEncoderPosition() <= 7 * autoConstants.ftToRev) {
+      mec_subsystem.drive(autoConstants.movementSpeed, 0, 0);
+    }
+
+    if (DriverStation.getAlliance().equals("Red")) {
+      if (DriverStation.getLocation().getAsInt() == 1 || DriverStation.getLocation().getAsInt() == 2) {
+        if (aprilDist <= autoConstants.distToAmp * 12) {
+          mec_subsystem.drive(autoConstants.movementSpeed, 0, 0);
+        }
+      }
+    } else if (DriverStation.getAlliance().equals("Blue")) {
+
+    } else {
+      System.err.println("Driver Station Alliance Invalid State: " + DriverStation.getAlliance());
+    }
+
     if (aprilId > 0) {
-      if(aprilId == 12 && aprilAngle >= 89 && aprilAngle <= 91) { //7
+      if (aprilId == 12 && aprilAngle >= 89 && aprilAngle <= 91) { // 7
         SmartDashboard.putBoolean("April-Present", true);
       } else {
         SmartDashboard.putBoolean("April-Present", false);
@@ -62,9 +83,9 @@ public class AutonCommand extends Command {
     // outputSpeed = error * kp;
     // System.err.println("OutSpeed In Auto: " + outputSpeed);
     // if (outputSpeed > 0) {
-    //   mec_subsystem.drive(0, outputSpeed, 0);
+    // mec_subsystem.drive(0, outputSpeed, 0);
     // } else {
-    //   System.err.println("STOP!");
+    // System.err.println("STOP!");
     // }
   }
 

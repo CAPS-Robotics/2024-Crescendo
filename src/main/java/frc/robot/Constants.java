@@ -19,38 +19,44 @@ package frc.robot;
 public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
-    // Auto
-    public static final double gearRatio = 12.571471214294434 / 4096;
-    public static final double inchToRev = 1/(6*Math.PI);
-    public static final double ftToRev = 2/Math.PI;
+  }
 
-    // Shooter
-    public static final double intakeSpeed = .25; //tmp
-    public static final double shootTrapSpeed = .75; //2808 rpm
-    public static final double shootAmpSpeed = .5; //tmp
-    public static final double backRollersShootSpeed = .35; //tmp
+  public static class AutoConstants {
+    public static final double gearRatio = 12.571471214294434 / 4096;
+    public static final double movementSpeed = 0.75;
+    public static final double inchToRev = 1 / (6 * Math.PI);
+    public static final double ftToRev = 2 / Math.PI;
+    public static final double distToAmp = 8.45; // ft
+  }
+
+  public static class ShooterConstants {
+    public static final double intakeSpeed = .25; // tmp
+    public static final double shootTrapSpeed = .75; // 2808 rpm
+    public static final double shootAmpSpeed = .5; // tmp
+    public static final double backRollersShootSpeed = .35; // tmp
 
     public static final double kP = .0002;
     public static final double kI = 0;
-    public static final double kD = 0;    
+    public static final double kD = 0;
+  }
 
-    // Slide
+  public static class SlideConstants {
     public static final double slideSpeed = .1;
     public static final double slidePosition2 = 0.8;
+  }
 
-    //Endgame 
+  public static class EndgameConstants {
     public static final double heightCamTo12 = 48 - 15;
     public static final double distToChain = 20;
+  }
 
-    // Climb
+  public static class ClimbConstants {
     public static final double climbSpeed = .5;
-    public static final double maxClimbExtension = 270/360;
-
-    // Speeds
+    public static final double maxClimbExtension = 270 / 360;
     public static final double speedToClimb = .5;
   }
 
   public static class Distances {
-    public static final double climbDist = 50; //in.
+    public static final double climbDist = 50; // in.
   }
 }

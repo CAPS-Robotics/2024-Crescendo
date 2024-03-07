@@ -11,10 +11,11 @@ import com.revrobotics.RelativeEncoder;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.Constants.SlideConstants;
 
 public class SlideSubsystem extends SubsystemBase {
   // MecanumSubsystem mec_subsystem = new MecanumSubsystem();
-  OperatorConstants operatorConstants = new OperatorConstants();
+  SlideConstants slideConstants = new SlideConstants();
 
   DigitalInput bottomLimitSwitch = new DigitalInput(0);
   DigitalInput firstPosSenseor = new DigitalInput(1);
@@ -25,7 +26,7 @@ public class SlideSubsystem extends SubsystemBase {
 
   private boolean fromBottom = true;
 
-  public SlideSubsystem() { 
+  public SlideSubsystem() {
     slideMotor.restoreFactoryDefaults();
     encoderBottomSlide = slideMotor.getEncoder();
     encoderBottomSlide.setPosition(0);
@@ -42,14 +43,14 @@ public class SlideSubsystem extends SubsystemBase {
     System.out.println("Limit Switch 1: " + bottomLimitSwitch.get());
     if (bottomLimitSwitch.get()) {
       System.out.println("BottomP ");
-      slideMotor.set(-1 * operatorConstants.slideSpeed);
-    } else if (!bottomLimitSwitch.get()){
+      slideMotor.set(-1 * slideConstants.slideSpeed);
+    } else if (!bottomLimitSwitch.get()) {
       stop();
     }
   }
 
   public void pos1() {
-    System.out.println("Limit Switch 3: " + firstPosSenseor.get());   
+    System.out.println("Limit Switch 3: " + firstPosSenseor.get());
     if (!bottomLimitSwitch.get()) {
       fromBottom = true;
     } else if (!secondPosSenseor.get()) {
@@ -57,12 +58,12 @@ public class SlideSubsystem extends SubsystemBase {
     }
     if (firstPosSenseor.get() && fromBottom) {
       System.out.println("POS 1 STOP from bottom");
-      slideMotor.set(operatorConstants.slideSpeed);
+      slideMotor.set(slideConstants.slideSpeed);
     } else if (firstPosSenseor.get() && !fromBottom) {
       System.out.println("POS 1 STOP not from bottom");
-      slideMotor.set(-1 * operatorConstants.slideSpeed);
+      slideMotor.set(-1 * slideConstants.slideSpeed);
     } else {
-    stop();
+      stop();
     }
   }
 
@@ -70,7 +71,7 @@ public class SlideSubsystem extends SubsystemBase {
     System.out.println("Limit Switch 2: " + secondPosSenseor.get());
     if (secondPosSenseor.get()) {
       System.out.println("POS 2 STOP ");
-      slideMotor.set(operatorConstants.slideSpeed);
+      slideMotor.set(slideConstants.slideSpeed);
     } else {
       stop();
     }
