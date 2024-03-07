@@ -53,18 +53,19 @@ public class TeleopCommand extends Command {
   private Distances distances;
 
   public TeleopCommand(MecanumSubsystem subsystem,
-                         ClimberSubsystem climbSubsystem, SlideSubsystem slideSubsystem, ShooterSubsystem shootSubsystem, Joystick joystick) {
+                         Joystick joystick) {
     operatorConstants = new OperatorConstants();
     distances = new Distances();
 
-    this.shooterSubsystem = shootSubsystem;
-    this.slideSubsystem = slideSubsystem; 
-    this.climbSubsystem = climbSubsystem;
+    // this.shooterSubsystem = shootSubsystem;
+    // this.slideSubsystem = slideSubsystem; 
+    // this.climbSubsystem = climbSubsystem;
     this.mec_subsystem = subsystem;
     this.joystick = joystick;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(mec_subsystem);
   }
+
 
   // Called when the command is initially scheduled.
   @Override
@@ -82,6 +83,10 @@ public class TeleopCommand extends Command {
     yAxis = joystick.getY(); // Front and Back
     zAxis = joystick.getZ(); // Turning
 
+    SmartDashboard.putNumber("x", xAxis);
+    SmartDashboard.putNumber("y", yAxis);
+    SmartDashboard.putNumber("z", zAxis);
+
     leftTrigger = joystick.getRawAxis(2);
     rightTrigger = joystick.getRawAxis(3);
 
@@ -98,64 +103,58 @@ public class TeleopCommand extends Command {
     aprilId = (int) SmartDashboard.getNumber("id", -1);
     aprilAngle = SmartDashboard.getNumber("angle", 1000);
     aprilDist = SmartDashboard.getNumber("dist", -1);
-    if (yButton) {
-      shooterSubsystem.intake();
-    } else if (xButton) {
-      shooterSubsystem.shootAmp();
-    } else if (bButton) {
-      shooterSubsystem.shootTrap();
-    } else {
-    // shooterSubsystem.stop();
-    }
+    // if (yButton) {
+    //   shooterSubsystem.intake();
+    // } else if (xButton) {
+    //   shooterSubsystem.shootAmp();
+    // } else if (bButton) {
+    //   shooterSubsystem.shootTrap();
+    // } else {
+    // // shooterSubsystem.stop();
+    // }
      
-     if (aButton) {
-      System.err.println("Endgame");
-      if(aprilId == 12) {
-        distNow = Math.sqrt(Math.pow(aprilDist, 2) - Math.pow(operatorConstants.heightCamTo12, 2)); 
-        distToMove = distNow - operatorConstants.distToChain;
-      } else { //TODO: add without april tag movement
-        if(mec_subsystem.avgEncoderPosition() <= operatorConstants.inchToRev*distToMove) {
-          climbSubsystem.climb();
-        }
-      }
-    }
-    System.out.println("POV" + pov);
-    if (pov == 270) { // define pov
-      System.err.println("0");
-      slideSubsystem.pos0();
-    } else if (pov == 180) {
-      System.err.println("1");
-      slideSubsystem.pos1();
-    } else if (pov == 90) {
-      System.err.println("2");
-      slideSubsystem.pos2();
-    } else {
-      slideSubsystem.stop();
-    }
-     if(SmartDashboard.getNumber("id", -1)!=-1.0 & SmartDashboard.getNumber("id", -1)!=-2.0){
-      shooterSubsystem.intake();
-     } else {
-       shooterSubsystem.stop();
-     }
+    //  if (aButton) {
+    //   System.err.println("Endgame");
+    //   if(aprilId == 12) {
+    //     distNow = Math.sqrt(Math.pow(aprilDist, 2) - Math.pow(operatorConstants.heightCamTo12, 2)); 
+    //     distToMove = distNow - operatorConstants.distToChain;
+    //   } else { //TODO: add without april tag movement
+    //     if(mec_subsystem.avgEncoderPosition() <= operatorConstants.inchToRev*distToMove) {
+    //       climbSubsystem.climb();
+    //     }
+    //   }
+    // }
+    // System.out.println("POV" + pov);
+    // if (pov == 270) { // define pov
+    //   System.err.println("0");
+    //   slideSubsystem.pos0();
+    // } else if (pov == 180) {
+    //   System.err.println("1");
+    //   slideSubsystem.pos1();
+    // } else if (pov == 90) {
+    //   System.err.println("2");
+    //   slideSubsystem.pos2();
+    // } else {
+    //   slideSubsystem.stop();
+    // }
+    //  if(SmartDashboard.getNumber("id", -1)!=-1.0 & SmartDashboard.getNumber("id", -1)!=-2.0){
+    //   shooterSubsystem.intake();
+    //  } else {
+    //    shooterSubsystem.stop();
+    //  }
 
     mec_subsystem.drive(-1 * xAxis, yAxis, -1 * zAxis);
 
-    System.err.println(aprilId);
-
-    if (aprilId !=- 1.0 && aprilId !=- 2.0) {
-      if (leftBumper) {
-        if(aprilId == 12) {
-          
-
-        } else {
-          System.err.println("Dont see 12");
-        }
-      } else {
-        mec_subsystem.drive(0,0,0);
-      }
-    } else {
-      mec_subsystem.drive(0,0,0);
-    }
+    // System.err.println(aprilId);
+    // if (leftBumper) {
+    //   if(aprilId == 12) {
+        
+    //   } else {
+    //     System.err.println("Dont see 12");
+    //   }
+    // } else {
+    //   mec_subsystem.drive(0,0,0);
+    // }
   }
 
   public void mecToDist(int id, double distToReach) {
