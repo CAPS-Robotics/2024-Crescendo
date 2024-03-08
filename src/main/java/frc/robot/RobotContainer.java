@@ -12,7 +12,6 @@ import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SlideSubsystem;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -26,8 +25,8 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final MecanumSubsystem mec_Subsystem = new MecanumSubsystem();
-  private final ShooterSubsystem shoot_Subsystem = new ShooterSubsystem();
-  // private final ClimberSubsystem climber_Subsystem = new ClimberSubsystem();
+  // private final ShooterSubsystem shoot_Subsystem = new ShooterSubsystem();
+  private final ClimberSubsystem climber_Subsystem = new ClimberSubsystem(mec_Subsystem);
   // private final SlideSubsystem slideSubsystem = new SlideSubsystem();
   private final Joystick joystick = new Joystick(0);
 
@@ -48,7 +47,7 @@ public class RobotContainer {
    }
   public void defaultCommand() {
     System.err.println(DriverStation.isTeleopEnabled());
-     mec_Subsystem.setDefaultCommand(new TeleopCommand(mec_Subsystem, shoot_Subsystem, joystick));
+     mec_Subsystem.setDefaultCommand(new TeleopCommand(mec_Subsystem, climber_Subsystem, joystick));
   }
 
   /**

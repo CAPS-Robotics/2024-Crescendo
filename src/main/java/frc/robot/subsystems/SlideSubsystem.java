@@ -10,7 +10,6 @@ import com.revrobotics.RelativeEncoder;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.OperatorConstants;
 import frc.robot.Constants.SlideConstants;
 
 public class SlideSubsystem extends SubsystemBase {
@@ -39,6 +38,7 @@ public class SlideSubsystem extends SubsystemBase {
   public void slide(double slideSpeed) {
   }
 
+  @SuppressWarnings("static-access")
   public void pos0() {
     System.out.println("Limit Switch 1: " + bottomLimitSwitch.get());
     if (bottomLimitSwitch.get()) {
@@ -49,6 +49,7 @@ public class SlideSubsystem extends SubsystemBase {
     }
   }
 
+  @SuppressWarnings("static-access")
   public void pos1() {
     System.out.println("Limit Switch 3: " + firstPosSenseor.get());
     if (!bottomLimitSwitch.get()) {
@@ -67,6 +68,7 @@ public class SlideSubsystem extends SubsystemBase {
     }
   }
 
+  @SuppressWarnings("static-access")
   public void pos2() {
     System.out.println("Limit Switch 2: " + secondPosSenseor.get());
     if (secondPosSenseor.get()) {

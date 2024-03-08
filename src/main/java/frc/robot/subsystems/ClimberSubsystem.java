@@ -6,36 +6,37 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.RelativeEncoder;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Encoder;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ClimbConstants;
-import frc.robot.Constants.OperatorConstants;
 
 public class ClimberSubsystem extends SubsystemBase {
 
-  MecanumSubsystem mec_subsystem = new MecanumSubsystem();
+  MecanumSubsystem mec_subsystem;
   ClimbConstants climbConstants = new ClimbConstants();
 
-  private CANSparkMax climber = new CANSparkMax(9, MotorType.kBrushless);
-
-  private RelativeEncoder climbEncoder = climber.getEncoder();
-
+  private CANSparkMax climber = new CANSparkMax(9, MotorType.kBrushed);
+  DigitalInput topLimitSwitch = new DigitalInput(0);
+  
   // CANSparkMax
-  public ClimberSubsystem() {
+  public ClimberSubsystem(MecanumSubsystem mecanumSubsystem) {
+    mec_subsystem = mecanumSubsystem;
     climber.restoreFactoryDefaults();
-    climbEncoder.setPosition(0);
   }
 
+  @SuppressWarnings("static-access")
   public void climb() {
+    climber.restoreFactoryDefaults();
     climber.set(climbConstants.climbSpeed);
   }
 
+  @SuppressWarnings("static-access")
   @Override
   public void periodic() {
-    if (climbEncoder.getPosition() >= climbConstants.maxClimbExtension) {
+    if (!topLimitSwitch.get()) {
       climber.set(0);
     }
   }

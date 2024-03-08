@@ -27,6 +27,9 @@ public final class Constants {
     public static final double inchToRev = 1 / (6 * Math.PI);
     public static final double ftToRev = 2 / Math.PI;
     public static final double distToAmp = 8.45; // ft
+
+    public static final double heightCamTo12 = 48 - 15;
+    public static final double distToChain = 20;
   }
 
   public static class ShooterConstants {
@@ -43,11 +46,6 @@ public final class Constants {
   public static class SlideConstants {
     public static final double slideSpeed = .1;
     public static final double slidePosition2 = 0.8;
-  }
-
-  public static class EndgameConstants {
-    public static final double heightCamTo12 = 48 - 15;
-    public static final double distToChain = 20;
   }
 
   public static class ClimbConstants {

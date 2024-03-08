@@ -4,17 +4,14 @@
 
 package frc.robot.commands.Mecanum;
 
-import frc.robot.Constants.OperatorConstants;
+import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.ClimbConstants;
-import frc.robot.Constants.Distances;
 import frc.robot.subsystems.ClimberSubsystem;
-// import frc.robot.Dashboard;
 import frc.robot.subsystems.MecanumSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SlideSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /** An example command that uses an example subsystem. */
@@ -46,18 +43,19 @@ public class TeleopCommand extends Command {
   double aprilDist = -1;
 
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
-  private ClimberSubsystem climbSubsystem;
+  private ClimberSubsystem climb_subsystem;
   private MecanumSubsystem mec_subsystem;
-  private SlideSubsystem slideSubsystem;
-  private ShooterSubsystem shooterSubsystem;
-  private ClimbConstants climbConstants;
+  // private SlideSubsystem slideSubsystem;
+  // private ShooterSubsystem shooterSubsystem;
+  private ClimbConstants climbConstants = new ClimbConstants();
+  private AutoConstants autoConstants = new AutoConstants();
 
-  public TeleopCommand(MecanumSubsystem subsystem, ShooterSubsystem shoot_Subsystem,
+  public TeleopCommand(MecanumSubsystem subsystem, ClimberSubsystem climbSubsystem,
       Joystick joystick) {
 
-    this.shooterSubsystem = shoot_Subsystem;
+    // this.shooterSubsystem = shoot_Subsystem;
     // this.slideSubsystem = slideSubsystem;
-    // this.climbSubsystem = climbSubsystem;
+    climb_subsystem = climbSubsystem;
     this.mec_subsystem = subsystem;
     this.joystick = joystick;
     // Use addRequirements() here to declare subsystem dependencies.
@@ -72,6 +70,7 @@ public class TeleopCommand extends Command {
   }
 
   // Called every time the scheduler runs while the command is scheduled.
+  @SuppressWarnings("static-access")
   @Override
   public void execute() {
     pov = joystick.getPOV();
@@ -95,33 +94,35 @@ public class TeleopCommand extends Command {
     leftBumper = joystick.getRawButton(5);
     rightBumper = joystick.getRawButton(6);
 
-    // System.err.println(SmartDashboard.getNumber("id", -1));
 
     aprilId = (int) SmartDashboard.getNumber("id", -1);
     aprilAngle = SmartDashboard.getNumber("angle", 1000);
     aprilDist = SmartDashboard.getNumber("dist", -1);
-    if (yButton) {
-      shooterSubsystem.intake();
-    } else if (xButton) {
-      shooterSubsystem.shootAmp();
-    } else if (bButton) {
-      shooterSubsystem.shootTrap();
-    } else {
-      // shooterSubsystem.stop();
+    // if (yButton) {
+    //   shooterSubsystem.intake();
+    // } else if (xButton) {
+    //   shooterSubsystem.shootAmp();
+    // } else if (bButton) {
+    //   shooterSubsystem.shootTrap();
+    // } else {
+    //   // shooterSubsystem.stop();
+    // }
+
+    if (aButton) {
+      climb_subsystem.climb();
     }
 
-    // if (aButton) {
-    // System.err.println("Endgame");
-    // if(aprilId == 12) {
-    // distNow = Math.sqrt(Math.pow(aprilDist, 2) -
-    // Math.pow(operatorConstants.heightCamTo12, 2));
-    // distToMove = distNow - operatorConstants.distToChain;
-    // } else { //TODO: add without april tag movement
-    // if(mec_subsystem.avgEncoderPosition() <=
-    // operatorConstants.inchToRev*distToMove) {
-    // climbSubsystem.climb();
-    // }
-    // }
+    // if (bButton) {
+    //   System.err.println("Endgame");
+    //   if (aprilId == 12) {
+    //     distNow = Math.sqrt(Math.pow(aprilDist, 2) - Math.pow(autoConstants.heightCamTo12, 2));
+    //     distToMove = distNow - autoConstants.distToChain;
+    //     System.err.println("DistNow: " + distNow + " DistMove: " + distToMove + " Angle: " + aprilAngle);
+    //   } else { //TODO: add without april tag movement
+    //     if (mec_subsystem.avgEncoderPosition() <= autoConstants.inchToRev*distToMove) {
+    //       climb_subsystem.climb();
+    //     }
+    //   }
     // }
     // System.out.println("POV" + pov);
     // if (pov == 270) { // define pov

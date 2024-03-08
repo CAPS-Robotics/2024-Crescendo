@@ -10,11 +10,8 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkPIDController;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj2.command.PIDCommand;
-import edu.wpi.first.wpilibj2.command.PIDSubsystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-import frc.robot.Constants.OperatorConstants;
 import frc.robot.Constants.ShooterConstants;
 
 public class ShooterSubsystem extends SubsystemBase {
@@ -54,6 +51,7 @@ public class ShooterSubsystem extends SubsystemBase {
         shooterWheel.set(0);
     }
 
+    @SuppressWarnings("static-access")
     public void intake() {
         System.err.println("in shoot intake");
         shooterRollers.setInverted(true);
@@ -63,6 +61,7 @@ public class ShooterSubsystem extends SubsystemBase {
         backPidController.setReference(shooterConstants.intakeSpeed, CANSparkMax.ControlType.kVelocity);
     }
 
+    @SuppressWarnings("static-access")
     public void shootAmp() {
         System.err.println("in shoot Amp");
         shooterRollers.setInverted(false);
@@ -75,6 +74,7 @@ public class ShooterSubsystem extends SubsystemBase {
         }
     }
 
+    @SuppressWarnings("static-access")
     public void shootTrap() {
         System.err.println("in shoot Trap");
         shooterRollers.setInverted(false);
