@@ -708,6 +708,7 @@ AddOutputFilter chunkFilter
 			<Item Name="Z900_navX_Util_EncodeProtocol_UnsignedHundredths.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Util/Encode Protocol/Z900_navX_Util_EncodeProtocol_UnsignedHundredths.vi"/>
 			<Item Name="Z900_navX_Util_LittleEndian_to_BigEndian.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Util/Z900_navX_Util_LittleEndian_to_BigEndian.vi"/>
 			<Item Name="Z900_navX_ZeroVectorTypeDef.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/Z900_navX_ZeroVectorTypeDef.ctl"/>
+			<Item Name="Zero Yaw.vi" Type="VI" URL="../../../../navx-mxp/labviewae/Set/Zero Yaw.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build">
 			<Item Name="FRC Robot Boot-up Deployment" Type="{69A947D5-514E-4E75-818E-69657C0547D8}">
@@ -726,7 +727,7 @@ AddOutputFilter chunkFilter
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToProject</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{6782B190-04E1-4A41-93AB-3F357B35791E}</Property>
 				<Property Name="Bld_targetDestDir" Type="Path">/home/lvuser/natinst/bin</Property>
-				<Property Name="Bld_version.build" Type="Int">26</Property>
+				<Property Name="Bld_version.build" Type="Int">34</Property>
 				<Property Name="Bld_version.major" Type="Int">1</Property>
 				<Property Name="Destination[0].destName" Type="Str">startup.rtexe</Property>
 				<Property Name="Destination[0].path" Type="Path">/home/lvuser/natinst/bin/startup.rtexe</Property>
