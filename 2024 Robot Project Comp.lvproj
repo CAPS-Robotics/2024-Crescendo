@@ -128,20 +128,6 @@ AddOutputFilter chunkFilter
 				<Item Name="dPWM_PanelSim_Global.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/Simulation/Protocol/Devices/dPWM/dPWM_PanelSim_Global.vi"/>
 				<Item Name="Error Cluster From Error Code.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Error Cluster From Error Code.vi"/>
 				<Item Name="FormatTime String.vi" Type="VI" URL="/&lt;vilib&gt;/express/express execution control/ElapsedTimeBlock.llb/FormatTime String.vi"/>
-				<Item Name="FPGA_AIAverageBits.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/AI/FPGA_AIAverageBits.vi"/>
-				<Item Name="FPGA_AIChannel.ctl" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/AI/FPGA_AIChannel.ctl"/>
-				<Item Name="FPGA_AIDevRef.ctl" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/AI/FPGA_AIDevRef.ctl"/>
-				<Item Name="FPGA_AIERRInvalidAccumulatorChannel.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/AI/FPGA_AIERRInvalidAccumulatorChannel.vi"/>
-				<Item Name="FPGA_AIERRInvalidAnalogChannel.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/AI/FPGA_AIERRInvalidAnalogChannel.vi"/>
-				<Item Name="FPGA_AIOpen.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/AI/FPGA_AIOpen.vi"/>
-				<Item Name="FPGA_AIOversampleBits.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/AI/FPGA_AIOversampleBits.vi"/>
-				<Item Name="FPGA_AIReadAccumulatorCenter.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/AI/FPGA_AIReadAccumulatorCenter.vi"/>
-				<Item Name="FPGA_AIReadAccumulatorOutput.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/AI/FPGA_AIReadAccumulatorOutput.vi"/>
-				<Item Name="FPGA_AIReadAverageBits.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/AI/FPGA_AIReadAverageBits.vi"/>
-				<Item Name="FPGA_AIReadAveraged.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/AI/FPGA_AIReadAveraged.vi"/>
-				<Item Name="FPGA_AIReadConfig.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/AI/FPGA_AIReadConfig.vi"/>
-				<Item Name="FPGA_AIReadLSBWeight.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/AI/FPGA_AIReadLSBWeight.vi"/>
-				<Item Name="FPGA_AIReadOversampleBits.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/AI/FPGA_AIReadOversampleBits.vi"/>
 				<Item Name="FPGA_CounterERRInvalidResource.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/Counter/FPGA_CounterERRInvalidResource.vi"/>
 				<Item Name="FPGA_DIOChannel.ctl" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/DIO/FPGA_DIOChannel.ctl"/>
 				<Item Name="FPGA_DIODevRef.ctl" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/DIO/FPGA_DIODevRef.ctl"/>
@@ -167,8 +153,6 @@ AddOutputFilter chunkFilter
 				<Item Name="FPGA_DIOWriteSlowValueRelayRev.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/DIO/FPGA_DIOWriteSlowValueRelayRev.vi"/>
 				<Item Name="FPGA_MapDIOChannelEnumToModuleLine.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/DIO/FPGA_MapDIOChannelEnumToModuleLine.vi"/>
 				<Item Name="FPGA_NIFPGAInterfaceFPGAResourceConstant.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/FPGA_NIFPGAInterfaceFPGAResourceConstant.vi"/>
-				<Item Name="FPGA_ReadAI.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/AI/FPGA_ReadAI.vi"/>
-				<Item Name="FPGA_SPI_ReadAuto.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/SPI/FPGA_SPI_ReadAuto.vi"/>
 				<Item Name="FPGA_SPI_Write_EnableDIO.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/SPI/FPGA_SPI_Write_EnableDIO.vi"/>
 				<Item Name="FPGA_SPIWriteChipSelectActiveHigh.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/SPI/FPGA_SPIWriteChipSelectActiveHigh.vi"/>
 				<Item Name="FPGA_SystemAsync VI Agent.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/SystemInterfaces/System/FPGA_SystemAsync VI Agent.vi"/>
@@ -305,7 +289,6 @@ AddOutputFilter chunkFilter
 				<Item Name="SPARK Get Motor Interface.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/SubVI/Public/SPARK Get Motor Interface.vi"/>
 				<Item Name="SPARK Get Output.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/SubVI/Public/SPARK Get Output.vi"/>
 				<Item Name="SPARK Get Sensor Position.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/SubVI/Public/SPARK Get Sensor Position.vi"/>
-				<Item Name="SPARK Get Sensor Velocity.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/SubVI/Public/SPARK Get Sensor Velocity.vi"/>
 				<Item Name="Spark MAX Broadcast Sync.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/SubVI/Private/Spark MAX Broadcast Sync.vi"/>
 				<Item Name="Spark MAX CAN API Mask.ctl" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/Typedef/Spark MAX CAN API Mask.ctl"/>
 				<Item Name="Spark MAX Check Firmare Version.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/SubVI/Private/Spark MAX Check Firmare Version.vi"/>
@@ -316,7 +299,6 @@ AddOutputFilter chunkFilter
 				<Item Name="Spark MAX Get Parameter Raw.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/SubVI/Private/Spark MAX Get Parameter Raw.vi"/>
 				<Item Name="Spark MAX Get Parameter.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/SubVI/Private/Spark MAX Get Parameter.vi"/>
 				<Item Name="Spark MAX Get Status 0.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/SubVI/Private/Spark MAX Get Status 0.vi"/>
-				<Item Name="Spark MAX Get Status 1.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/SubVI/Private/Spark MAX Get Status 1.vi"/>
 				<Item Name="Spark MAX Get Status 2.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/SubVI/Private/Spark MAX Get Status 2.vi"/>
 				<Item Name="Spark MAX Idle Mode.ctl" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/Typedef/Spark MAX Idle Mode.ctl"/>
 				<Item Name="Spark MAX Motor Type.ctl" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/Typedef/Spark MAX Motor Type.ctl"/>
@@ -342,7 +324,6 @@ AddOutputFilter chunkFilter
 				<Item Name="Spark MAX Start Daemon.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/SubVI/Private/Daemon/Spark MAX Start Daemon.vi"/>
 				<Item Name="Spark MAX Status 0 Flags.ctl" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/Typedef/Spark MAX Status 0 Flags.ctl"/>
 				<Item Name="Spark MAX Status 0 Frame.ctl" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/Typedef/Spark MAX Status 0 Frame.ctl"/>
-				<Item Name="Spark MAX Status 1 Frame.ctl" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/Typedef/Spark MAX Status 1 Frame.ctl"/>
 				<Item Name="Spark MAX Status 2 Frame.ctl" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/Typedef/Spark MAX Status 2 Frame.ctl"/>
 				<Item Name="Spark MAX Unpack Faults.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/SubVI/Private/Spark MAX Unpack Faults.vi"/>
 				<Item Name="Spark MAX Variant Data.ctl" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/ThirdParty/REV Robotics/REVLib/Typedef/Spark MAX Variant Data.ctl"/>
@@ -377,10 +358,6 @@ AddOutputFilter chunkFilter
 				<Item Name="Trim Whitespace.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Trim Whitespace.vi"/>
 				<Item Name="Validate Semaphore Size.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/semaphor.llb/Validate Semaphore Size.vi"/>
 				<Item Name="whitespace.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/whitespace.ctl"/>
-				<Item Name="WPI_AccumulatorGetOutput.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/AnalogChannel/Accumulator/WPI_AccumulatorGetOutput.vi"/>
-				<Item Name="WPI_AccumulatorOffset.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/AnalogChannel/Accumulator/WPI_AccumulatorOffset.vi"/>
-				<Item Name="WPI_AnalogChannelDevRef.ctl" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/AnalogChannel/WPI_AnalogChannelDevRef.ctl"/>
-				<Item Name="WPI_AnalogChannelValueToVoltage.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/AnalogChannel/WPI_AnalogChannelValueToVoltage.vi"/>
 				<Item Name="WPI_Camera HTTP Connection ResponderProto.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/Camera/WPI_Camera HTTP Connection ResponderProto.vi"/>
 				<Item Name="WPI_Camera Registry.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/Camera/WPI_Camera Registry.vi"/>
 				<Item Name="WPI_CameraAttributeIsAuto.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/Camera/USB Support/WPI_CameraAttributeIsAuto.vi"/>
@@ -501,16 +478,6 @@ AddOutputFilter chunkFilter
 				<Item Name="WPI_ERRFilterReserved.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/DigitalInput/Filter/WPI_ERRFilterReserved.vi"/>
 				<Item Name="WPI_ERRPwmChannelAllocated.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/PWM/WPI_ERRPwmChannelAllocated.vi"/>
 				<Item Name="WPI_GetSetVariantRefNum.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/Utilities/WPI_GetSetVariantRefNum.vi"/>
-				<Item Name="WPI_Gyro_ADXRS453_ParseSensorData.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/Gyro/ADXRS453/WPI_Gyro_ADXRS453_ParseSensorData.vi"/>
-				<Item Name="WPI_Gyro_ADXRS453_SPIToBitArray.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/Gyro/ADXRS453/WPI_Gyro_ADXRS453_SPIToBitArray.vi"/>
-				<Item Name="WPI_Gyro_ADXRS453_Status.ctl" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/Gyro/ADXRS453/WPI_Gyro_ADXRS453_Status.ctl"/>
-				<Item Name="WPI_GyroAnalogGetAngle.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/Gyro/WPI_GyroAnalogGetAngle.vi"/>
-				<Item Name="WPI_GyroDevRef.ctl" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/Gyro/WPI_GyroDevRef.ctl"/>
-				<Item Name="WPI_GyroDevRefToAnalogChannelDevRef.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/Gyro/WPI_GyroDevRefToAnalogChannelDevRef.vi"/>
-				<Item Name="WPI_GyroGetAngle.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/Gyro/WPI_GyroGetAngle.vi"/>
-				<Item Name="WPI_GyroRefNum Registry Get.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/Gyro/WPI_GyroRefNum Registry Get.vi"/>
-				<Item Name="WPI_GyroXRS450_SPI_GetAngle.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/Gyro/WPI_GyroXRS450_SPI_GetAngle.vi"/>
-				<Item Name="WPI_GyroXRS450_SPI_GetSet_Data.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/Gyro/WPI_GyroXRS450_SPI_GetSet_Data.vi"/>
 				<Item Name="WPI_I2C_ERRI2CAlreadyAllocated.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/I2C/WPI_I2C_ERRI2CAlreadyAllocated.vi"/>
 				<Item Name="WPI_I2C_ERRInvalidI2C_Index.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/I2C/WPI_I2C_ERRInvalidI2C_Index.vi"/>
 				<Item Name="WPI_I2CBusCache.vi" Type="VI" URL="/&lt;vilib&gt;/Rock Robotics/WPI/I2C/WPI_I2CBusCache.vi"/>
@@ -632,43 +599,43 @@ AddOutputFilter chunkFilter
 			<Item Name="FRC_NetworkTablesLV.dll" Type="Document" URL="FRC_NetworkTablesLV.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="FRIC_navX_Clear_Buffer_Warning.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Processing Loop/FRIC_navX_Clear_Buffer_Warning.vi"/>
-			<Item Name="FRIC_navX_DecodeRegisterLengthClusterTypeDef_.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/FRIC_navX_DecodeRegisterLengthClusterTypeDef_.ctl"/>
-			<Item Name="FRIC_navX_DeviceNumbersTypeDef.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/FRIC_navX_DeviceNumbersTypeDef.ctl"/>
-			<Item Name="FRIC_navX_Get_NextState_ProcessLoop.vi" Type="VI" URL="../../../../navx-mxp/labviewae/Get/_Internal/FRIC_navX_Get_NextState_ProcessLoop.vi"/>
-			<Item Name="FRIC_navX_Get_RawValues_GyroAccelMag.vi" Type="VI" URL="../../../../navx-mxp/labviewae/Get/_Raw Values/FRIC_navX_Get_RawValues_GyroAccelMag.vi"/>
-			<Item Name="FRIC_navX_Get_Registry.vi" Type="VI" URL="../../../../navx-mxp/labviewae/Get/_Internal/FRIC_navX_Get_Registry.vi"/>
-			<Item Name="FRIC_navX_I2C Process Loop TypeDef.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/FRIC_navX_I2C Process Loop TypeDef.ctl"/>
-			<Item Name="FRIC_navX_Internal_I2C_GenerateCommand.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Processing Loop/FRIC_navX_Internal_I2C_GenerateCommand.vi"/>
-			<Item Name="FRIC_navX_Internal_I2C_ProcessingLoop.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Processing Loop/FRIC_navX_Internal_I2C_ProcessingLoop.vi"/>
-			<Item Name="FRIC_navX_Internal_ProcessingLoop_AddToArray.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Processing Loop/FRIC_navX_Internal_ProcessingLoop_AddToArray.vi"/>
-			<Item Name="FRIC_navX_Internal_ProcessingLoop_UpdateAE.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Processing Loop/FRIC_navX_Internal_ProcessingLoop_UpdateAE.vi"/>
-			<Item Name="FRIC_navX_Internal_Serial_GenerateCommand.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Processing Loop/FRIC_navX_Internal_Serial_GenerateCommand.vi"/>
-			<Item Name="FRIC_navX_Internal_Serial_ProcessingLoop.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Processing Loop/FRIC_navX_Internal_Serial_ProcessingLoop.vi"/>
-			<Item Name="FRIC_navX_Internal_SPI_GenerateCommand.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Processing Loop/FRIC_navX_Internal_SPI_GenerateCommand.vi"/>
-			<Item Name="FRIC_navX_Internal_SPI_ProcessingLoop.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Processing Loop/FRIC_navX_Internal_SPI_ProcessingLoop.vi"/>
-			<Item Name="FRIC_navX_Internal_USB_ProcessingLoop.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Processing Loop/FRIC_navX_Internal_USB_ProcessingLoop.vi"/>
-			<Item Name="FRIC_navX_ProcessingLoopStatesTypeDef_I2C.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/FRIC_navX_ProcessingLoopStatesTypeDef_I2C.ctl"/>
-			<Item Name="FRIC_navX_Util_DecodeProtocol_Int16.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Util/Decode/FRIC_navX_Util_DecodeProtocol_Int16.vi"/>
-			<Item Name="FRIC_navX_Util_DecodeProtocol_Int32.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Util/Decode/FRIC_navX_Util_DecodeProtocol_Int32.vi"/>
-			<Item Name="FRIC_navX_Util_DecodeProtocol_UInt16.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Util/Decode/FRIC_navX_Util_DecodeProtocol_UInt16.vi"/>
-			<Item Name="FRIC_navX_Util_DecodeProtocol_UInt32.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Util/Decode/FRIC_navX_Util_DecodeProtocol_UInt32.vi"/>
-			<Item Name="Get_BoardInformation.vi" Type="VI" URL="../../../../navx-mxp/labviewae/Get/Advanced/Get_BoardInformation.vi"/>
-			<Item Name="Get_Connect_Status.vi" Type="VI" URL="../../../../navx-mxp/labviewae/Get/Advanced/Get_Connect_Status.vi"/>
-			<Item Name="Get_Displacement.vi" Type="VI" URL="../../../../navx-mxp/labviewae/Get/Advanced/Get_Displacement.vi"/>
-			<Item Name="Get_Error_Status.vi" Type="VI" URL="../../../../navx-mxp/labviewae/Get/Advanced/Get_Error_Status.vi"/>
-			<Item Name="Get_HaultStatus.vi" Type="VI" URL="../../../../navx-mxp/labviewae/Get/Advanced/Get_HaultStatus.vi"/>
-			<Item Name="Get_LinearAcceleration.vi" Type="VI" URL="../../../../navx-mxp/labviewae/Get/Advanced/Get_LinearAcceleration.vi"/>
-			<Item Name="Get_MPUTemp.vi" Type="VI" URL="../../../../navx-mxp/labviewae/Get/Advanced/Get_MPUTemp.vi"/>
-			<Item Name="Get_Notifier_Hault_Notifier.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Processing Loop/Get_Notifier_Hault_Notifier.vi"/>
-			<Item Name="Get_Notifier_REF_Once.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Processing Loop/Get_Notifier_REF_Once.vi"/>
-			<Item Name="Get_Quaternion.vi" Type="VI" URL="../../../../navx-mxp/labviewae/Get/Advanced/Get_Quaternion.vi"/>
-			<Item Name="Get_Status.vi" Type="VI" URL="../../../../navx-mxp/labviewae/Get/Advanced/Get_Status.vi"/>
-			<Item Name="Get_STREAM_TYPE.vi" Type="VI" URL="../../../../navx-mxp/labviewae/Get/Advanced/Get_STREAM_TYPE.vi"/>
-			<Item Name="Get_Timestamp.vi" Type="VI" URL="../../../../navx-mxp/labviewae/Get/Advanced/Get_Timestamp.vi"/>
-			<Item Name="Get_YPRHfH.vi" Type="VI" URL="../../../../navx-mxp/labviewae/Get/Get_YPRHfH.vi"/>
-			<Item Name="NavX Main.vi" Type="VI" URL="../../../../navx-mxp/labviewae/NavX Main.vi"/>
-			<Item Name="navX_SPI_CRC.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Device/_Internal/SPI/navX_SPI_CRC.vi"/>
+			<Item Name="FRIC_navX_Clear_Buffer_Warning.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Processing Loop/FRIC_navX_Clear_Buffer_Warning.vi"/>
+			<Item Name="FRIC_navX_DecodeRegisterLengthClusterTypeDef_.ctl" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_TypeDefs/FRIC_navX_DecodeRegisterLengthClusterTypeDef_.ctl"/>
+			<Item Name="FRIC_navX_DeviceNumbersTypeDef.ctl" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_TypeDefs/FRIC_navX_DeviceNumbersTypeDef.ctl"/>
+			<Item Name="FRIC_navX_Get_NextState_ProcessLoop.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/Get/_Internal/FRIC_navX_Get_NextState_ProcessLoop.vi"/>
+			<Item Name="FRIC_navX_Get_RawValues_GyroAccelMag.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/Get/_Raw Values/FRIC_navX_Get_RawValues_GyroAccelMag.vi"/>
+			<Item Name="FRIC_navX_Get_Registry.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/Get/_Internal/FRIC_navX_Get_Registry.vi"/>
+			<Item Name="FRIC_navX_I2C Process Loop TypeDef.ctl" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_TypeDefs/FRIC_navX_I2C Process Loop TypeDef.ctl"/>
+			<Item Name="FRIC_navX_Internal_I2C_GenerateCommand.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Processing Loop/FRIC_navX_Internal_I2C_GenerateCommand.vi"/>
+			<Item Name="FRIC_navX_Internal_I2C_ProcessingLoop.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Processing Loop/FRIC_navX_Internal_I2C_ProcessingLoop.vi"/>
+			<Item Name="FRIC_navX_Internal_ProcessingLoop_AddToArray.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Processing Loop/FRIC_navX_Internal_ProcessingLoop_AddToArray.vi"/>
+			<Item Name="FRIC_navX_Internal_ProcessingLoop_UpdateAE.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Processing Loop/FRIC_navX_Internal_ProcessingLoop_UpdateAE.vi"/>
+			<Item Name="FRIC_navX_Internal_Serial_GenerateCommand.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Processing Loop/FRIC_navX_Internal_Serial_GenerateCommand.vi"/>
+			<Item Name="FRIC_navX_Internal_Serial_ProcessingLoop.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Processing Loop/FRIC_navX_Internal_Serial_ProcessingLoop.vi"/>
+			<Item Name="FRIC_navX_Internal_SPI_GenerateCommand.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Processing Loop/FRIC_navX_Internal_SPI_GenerateCommand.vi"/>
+			<Item Name="FRIC_navX_Internal_SPI_ProcessingLoop.vi" Type="VI" URL="../../../../Desktop/Navx/FRIC_navX_Internal_SPI_ProcessingLoop.vi"/>
+			<Item Name="FRIC_navX_Internal_USB_ProcessingLoop.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Processing Loop/FRIC_navX_Internal_USB_ProcessingLoop.vi"/>
+			<Item Name="FRIC_navX_ProcessingLoopStatesTypeDef_I2C.ctl" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_TypeDefs/FRIC_navX_ProcessingLoopStatesTypeDef_I2C.ctl"/>
+			<Item Name="FRIC_navX_Util_DecodeProtocol_Int16.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Util/Decode/FRIC_navX_Util_DecodeProtocol_Int16.vi"/>
+			<Item Name="FRIC_navX_Util_DecodeProtocol_Int32.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Util/Decode/FRIC_navX_Util_DecodeProtocol_Int32.vi"/>
+			<Item Name="FRIC_navX_Util_DecodeProtocol_UInt16.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Util/Decode/FRIC_navX_Util_DecodeProtocol_UInt16.vi"/>
+			<Item Name="FRIC_navX_Util_DecodeProtocol_UInt32.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Util/Decode/FRIC_navX_Util_DecodeProtocol_UInt32.vi"/>
+			<Item Name="Get_BoardInformation.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/Get/Advanced/Get_BoardInformation.vi"/>
+			<Item Name="Get_Connect_Status.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/Get/Advanced/Get_Connect_Status.vi"/>
+			<Item Name="Get_Displacement.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/Get/Advanced/Get_Displacement.vi"/>
+			<Item Name="Get_Error_Status.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/Get/Advanced/Get_Error_Status.vi"/>
+			<Item Name="Get_HaultStatus.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/Get/Advanced/Get_HaultStatus.vi"/>
+			<Item Name="Get_LinearAcceleration.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/Get/Advanced/Get_LinearAcceleration.vi"/>
+			<Item Name="Get_MPUTemp.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/Get/Advanced/Get_MPUTemp.vi"/>
+			<Item Name="Get_Notifier_Hault_Notifier.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Processing Loop/Get_Notifier_Hault_Notifier.vi"/>
+			<Item Name="Get_Notifier_REF_Once.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Processing Loop/Get_Notifier_REF_Once.vi"/>
+			<Item Name="Get_Quaternion.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/Get/Advanced/Get_Quaternion.vi"/>
+			<Item Name="Get_Status.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/Get/Advanced/Get_Status.vi"/>
+			<Item Name="Get_STREAM_TYPE.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/Get/Advanced/Get_STREAM_TYPE.vi"/>
+			<Item Name="Get_Timestamp.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/Get/Advanced/Get_Timestamp.vi"/>
+			<Item Name="Get_YPRHfH.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/Get/Get_YPRHfH.vi"/>
+			<Item Name="NavX Main.vi" Type="VI" URL="../../../../Desktop/Navx Lib/NavX.llb/NavX Main.vi"/>
+			<Item Name="navX_SPI_CRC.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Device/_Internal/SPI/navX_SPI_CRC.vi"/>
 			<Item Name="NiFpgaLv.dll" Type="Document" URL="NiFpgaLv.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
@@ -681,34 +648,34 @@ AddOutputFilter chunkFilter
 			<Item Name="ntcoreffi.dll" Type="Document" URL="ntcoreffi.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="Send_Notifier.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Processing Loop/Send_Notifier.vi"/>
-			<Item Name="Update Serial Stream.vi" Type="VI" URL="../../../../navx-mxp/labviewae/Set/Update Serial Stream.vi"/>
-			<Item Name="Z900_navX_ActionTypeDef.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/Z900_navX_ActionTypeDef.ctl"/>
-			<Item Name="Z900_navX_DeviceRegisters.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/Z900_navX_DeviceRegisters.ctl"/>
-			<Item Name="Z900_navX_DeviceTypeDef.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/Z900_navX_DeviceTypeDef.ctl"/>
-			<Item Name="Z900_navX_Flags_CalibrationStatusTypeDef.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/Flags/Z900_navX_Flags_CalibrationStatusTypeDef.ctl"/>
-			<Item Name="Z900_navX_Flags_CapabilityTypeDef.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/Flags/Z900_navX_Flags_CapabilityTypeDef.ctl"/>
-			<Item Name="Z900_navX_Flags_HardwareRevTypeDef.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/Flags/Z900_navX_Flags_HardwareRevTypeDef.ctl"/>
-			<Item Name="Z900_navX_Flags_OmnimountConfigTypeDef.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/Flags/Z900_navX_Flags_OmnimountConfigTypeDef.ctl"/>
-			<Item Name="Z900_navX_Flags_OpStatusTypeDef.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/Flags/Z900_navX_Flags_OpStatusTypeDef.ctl"/>
-			<Item Name="Z900_navX_Flags_SelfTestStatusTypeDef.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/Flags/Z900_navX_Flags_SelfTestStatusTypeDef.ctl"/>
-			<Item Name="Z900_navX_IntegrationControlRegisters.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/Z900_navX_IntegrationControlRegisters.ctl"/>
-			<Item Name="Z900_navX_NotifyPacketTypeDef.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/Z900_navX_NotifyPacketTypeDef.ctl"/>
-			<Item Name="Z900_navX_ProtocolTypeDef.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/Z900_navX_ProtocolTypeDef.ctl"/>
-			<Item Name="Z900_navX_SERIAL_CapturePacket.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Device/_Internal/SERIAL/Z900_navX_SERIAL_CapturePacket.vi"/>
-			<Item Name="Z900_navX_SERIAL_DecodePacket.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Device/_Internal/SERIAL/Z900_navX_SERIAL_DecodePacket.vi"/>
-			<Item Name="Z900_navX_SERIAL_PacketChecksum.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Device/_Internal/SERIAL/Z900_navX_SERIAL_PacketChecksum.vi"/>
-			<Item Name="Z900_navX_SERIAL_ValidatePacketChecksum.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Device/_Internal/SERIAL/Z900_navX_SERIAL_ValidatePacketChecksum.vi"/>
-			<Item Name="Z900_navX_SERIAL_ValidatePacketTermination.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Device/_Internal/SERIAL/Z900_navX_SERIAL_ValidatePacketTermination.vi"/>
-			<Item Name="Z900_navX_SerialStreamTypeDef.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/Z900_navX_SerialStreamTypeDef.ctl"/>
-			<Item Name="Z900_navX_Util_BigEndian_to_LittleEndian.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Util/Z900_navX_Util_BigEndian_to_LittleEndian.vi"/>
-			<Item Name="Z900_navX_Util_EncodeProtocol_Int16.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Util/Encode Protocol/Z900_navX_Util_EncodeProtocol_Int16.vi"/>
-			<Item Name="Z900_navX_Util_EncodeProtocol_SignedHundredths.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Util/Encode Protocol/Z900_navX_Util_EncodeProtocol_SignedHundredths.vi"/>
-			<Item Name="Z900_navX_Util_EncodeProtocol_UInt16.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Util/Encode Protocol/Z900_navX_Util_EncodeProtocol_UInt16.vi"/>
-			<Item Name="Z900_navX_Util_EncodeProtocol_UnsignedHundredths.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Util/Encode Protocol/Z900_navX_Util_EncodeProtocol_UnsignedHundredths.vi"/>
-			<Item Name="Z900_navX_Util_LittleEndian_to_BigEndian.vi" Type="VI" URL="../../../../navx-mxp/labviewae/_Util/Z900_navX_Util_LittleEndian_to_BigEndian.vi"/>
-			<Item Name="Z900_navX_ZeroVectorTypeDef.ctl" Type="VI" URL="../../../../navx-mxp/labviewae/_TypeDefs/Z900_navX_ZeroVectorTypeDef.ctl"/>
-			<Item Name="Zero Yaw.vi" Type="VI" URL="../../../../navx-mxp/labviewae/Set/Zero Yaw.vi"/>
+			<Item Name="Send_Notifier.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Processing Loop/Send_Notifier.vi"/>
+			<Item Name="Update Serial Stream.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/Set/Update Serial Stream.vi"/>
+			<Item Name="Z900_navX_ActionTypeDef.ctl" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_TypeDefs/Z900_navX_ActionTypeDef.ctl"/>
+			<Item Name="Z900_navX_DeviceRegisters.ctl" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_TypeDefs/Z900_navX_DeviceRegisters.ctl"/>
+			<Item Name="Z900_navX_DeviceTypeDef.ctl" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_TypeDefs/Z900_navX_DeviceTypeDef.ctl"/>
+			<Item Name="Z900_navX_Flags_CalibrationStatusTypeDef.ctl" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_TypeDefs/Flags/Z900_navX_Flags_CalibrationStatusTypeDef.ctl"/>
+			<Item Name="Z900_navX_Flags_CapabilityTypeDef.ctl" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_TypeDefs/Flags/Z900_navX_Flags_CapabilityTypeDef.ctl"/>
+			<Item Name="Z900_navX_Flags_HardwareRevTypeDef.ctl" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_TypeDefs/Flags/Z900_navX_Flags_HardwareRevTypeDef.ctl"/>
+			<Item Name="Z900_navX_Flags_OmnimountConfigTypeDef.ctl" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_TypeDefs/Flags/Z900_navX_Flags_OmnimountConfigTypeDef.ctl"/>
+			<Item Name="Z900_navX_Flags_OpStatusTypeDef.ctl" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_TypeDefs/Flags/Z900_navX_Flags_OpStatusTypeDef.ctl"/>
+			<Item Name="Z900_navX_Flags_SelfTestStatusTypeDef.ctl" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_TypeDefs/Flags/Z900_navX_Flags_SelfTestStatusTypeDef.ctl"/>
+			<Item Name="Z900_navX_IntegrationControlRegisters.ctl" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_TypeDefs/Z900_navX_IntegrationControlRegisters.ctl"/>
+			<Item Name="Z900_navX_NotifyPacketTypeDef.ctl" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_TypeDefs/Z900_navX_NotifyPacketTypeDef.ctl"/>
+			<Item Name="Z900_navX_ProtocolTypeDef.ctl" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_TypeDefs/Z900_navX_ProtocolTypeDef.ctl"/>
+			<Item Name="Z900_navX_SERIAL_CapturePacket.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Device/_Internal/SERIAL/Z900_navX_SERIAL_CapturePacket.vi"/>
+			<Item Name="Z900_navX_SERIAL_DecodePacket.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Device/_Internal/SERIAL/Z900_navX_SERIAL_DecodePacket.vi"/>
+			<Item Name="Z900_navX_SERIAL_PacketChecksum.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Device/_Internal/SERIAL/Z900_navX_SERIAL_PacketChecksum.vi"/>
+			<Item Name="Z900_navX_SERIAL_ValidatePacketChecksum.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Device/_Internal/SERIAL/Z900_navX_SERIAL_ValidatePacketChecksum.vi"/>
+			<Item Name="Z900_navX_SERIAL_ValidatePacketTermination.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Device/_Internal/SERIAL/Z900_navX_SERIAL_ValidatePacketTermination.vi"/>
+			<Item Name="Z900_navX_SerialStreamTypeDef.ctl" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_TypeDefs/Z900_navX_SerialStreamTypeDef.ctl"/>
+			<Item Name="Z900_navX_Util_BigEndian_to_LittleEndian.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Util/Z900_navX_Util_BigEndian_to_LittleEndian.vi"/>
+			<Item Name="Z900_navX_Util_EncodeProtocol_Int16.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Util/Encode Protocol/Z900_navX_Util_EncodeProtocol_Int16.vi"/>
+			<Item Name="Z900_navX_Util_EncodeProtocol_SignedHundredths.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Util/Encode Protocol/Z900_navX_Util_EncodeProtocol_SignedHundredths.vi"/>
+			<Item Name="Z900_navX_Util_EncodeProtocol_UInt16.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Util/Encode Protocol/Z900_navX_Util_EncodeProtocol_UInt16.vi"/>
+			<Item Name="Z900_navX_Util_EncodeProtocol_UnsignedHundredths.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Util/Encode Protocol/Z900_navX_Util_EncodeProtocol_UnsignedHundredths.vi"/>
+			<Item Name="Z900_navX_Util_LittleEndian_to_BigEndian.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_Util/Z900_navX_Util_LittleEndian_to_BigEndian.vi"/>
+			<Item Name="Z900_navX_ZeroVectorTypeDef.ctl" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/_TypeDefs/Z900_navX_ZeroVectorTypeDef.ctl"/>
+			<Item Name="Zero Yaw.vi" Type="VI" URL="/C/Users/Robotics/navx-mxp/labviewae/Set/Zero Yaw.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build">
 			<Item Name="FRC Robot Boot-up Deployment" Type="{69A947D5-514E-4E75-818E-69657C0547D8}">
